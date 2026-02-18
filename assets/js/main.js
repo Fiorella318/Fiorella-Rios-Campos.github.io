@@ -203,40 +203,37 @@ window.addEventListener('resize', () => {
 updateUI();
 
 
-// 1. Inicializar EmailJS con tu Public Key
-// Reemplaza "TU_PUBLIC_KEY" con la que te da el dashboard de EmailJS
+// 1. Inicialización inmediata
 (function() {
     emailjs.init("Apcv4V9NQNYRBUbvo");
 })();
 
-// 2. Escuchar el evento de envío del formulario
-const contactForm = document.querySelector('.contact__form'); // Asegúrate de que tu <form> tenga esta clase
+// 2. Esperar a que cargue la página
+window.onload = function() {
+    const contactForm = document.getElementById('contact-form'); // Asegúrate que el HTML tenga id="contact-form"
+    const submitBtn = document.getElementById('submit');
 
-if (contactForm) {
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita que la página se recargue
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            // ESTO ES LO MÁS IMPORTANTE: Detiene el POST que causa el error 405
+            event.preventDefault();
 
-        // Cambiar el texto del botón para dar feedback al usuario
-        const submitBtn = contactForm.querySelector('.contact__button');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = "Sending...";
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
 
-        // Estos IDs los obtienes de tu panel de EmailJS
-        const serviceID = 'service_fzae7xm';
-        const templateID = 'template_7vyh6o8';
+            const serviceID = 'service_fzae7xm';
+            const templateID = 'template_7vyh6o8';
 
-        emailjs.sendForm(serviceID, templateID, this)
-            .then(() => {
-                submitBtn.textContent = "Message Sent! ✅";
-                contactForm.reset(); // Limpia el formulario
-                
-                // Opcional: Volver al texto original después de 3 segundos
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                }, 3000);
-            }, (err) => {
-                submitBtn.textContent = "Error! ❌";
-                alert("Hubo un error al enviar: " + JSON.stringify(err));
-            });
-    });
-}
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    submitBtn.textContent = "Message Sent! ✅";
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                }, (err) => {
+                    submitBtn.textContent = "Error! ❌";
+                    submitBtn.disabled = false;
+                    alert("Error: " + JSON.stringify(err));
+                });
+        });
+    }
+};

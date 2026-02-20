@@ -1,7 +1,4 @@
-// Asegúrate de que esto esté al inicio de tu main.js
-(function() {
-    emailjs.init("Apcv4V9NQNYRBUbvo"); // Tu Public Key
-})();
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const contactForm = document.getElementById('contact-form');

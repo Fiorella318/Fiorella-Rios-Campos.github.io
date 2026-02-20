@@ -203,36 +203,41 @@ window.addEventListener('resize', () => {
 updateUI();
 
 
-// 1. Inicialización inmediata
+// 1. Inicialización con tu Public Key
 (function() {
     emailjs.init("Apcv4V9NQNYRBUbvo");
 })();
 
-// 2. Esperar a que cargue la página
 window.onload = function() {
-    const contactForm = document.getElementById('contact-form'); // Asegúrate que el HTML tenga id="contact-form"
+    const contactForm = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
-            // ESTO ES LO MÁS IMPORTANTE: Detiene el POST que causa el error 405
-            event.preventDefault();
+            event.preventDefault(); // Evita que la página se recargue
 
-            submitBtn.textContent = "Sending...";
+            // Deshabilitamos el botón temporalmente para evitar múltiples envíos
             submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.5";
+            submitBtn.style.cursor = "not-allowed";
 
             const serviceID = 'service_fzae7xm';
             const templateID = 'template_7vyh6o8';
 
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
-                    submitBtn.textContent = "Message Sent! ✅";
-                    contactForm.reset();
+                    alert("¡Mensaje enviado con éxito, Fiorella! 🚀"); 
+                    contactForm.reset(); // Limpia los campos del formulario
+                })
+                .catch((err) => {
+                    alert("Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.");
+                    console.error("Error:", err);
+                })
+                .finally(() => {
+                    // Restauramos el botón a su estado original sin cambiar el texto
                     submitBtn.disabled = false;
-                }, (err) => {
-                    submitBtn.textContent = "Error! ❌";
-                    submitBtn.disabled = false;
-                    alert("Error: " + JSON.stringify(err));
+                    submitBtn.style.opacity = "1";
+                    submitBtn.style.cursor = "pointer";
                 });
         });
     }

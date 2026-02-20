@@ -1,3 +1,40 @@
+// Asegúrate de que esto esté al inicio de tu main.js
+(function() {
+    emailjs.init("Apcv4V9NQNYRBUbvo"); // Tu Public Key
+})();
+
+document.addEventListener("DOMContentLoaded", () => {
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Detiene el error 405 y el refresh
+
+            // Bloqueamos el botón sin cambiar el texto
+            submitBtn.disabled = true;
+            submitBtn.style.cursor = "wait";
+
+            const serviceID = 'service_fzae7xm'; // De tu captura
+            const templateID = 'template_7vyh6o8'; // De tu captura
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    alert("¡Mensaje enviado con éxito!");
+                    contactForm.reset();
+                })
+                .catch((err) => {
+                    alert("Error al enviar: " + JSON.stringify(err));
+                    console.error("EmailJS Error:", err);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.style.cursor = "pointer";
+                });
+        });
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const successLabel = document.querySelector(".success-text");
     const sound = document.getElementById("success-sound");
@@ -203,42 +240,3 @@ window.addEventListener('resize', () => {
 updateUI();
 
 
-// 1. Inicialización con tu Public Key
-(function() {
-    emailjs.init("Apcv4V9NQNYRBUbvo");
-})();
-
-window.onload = function() {
-    const contactForm = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita que la página se recargue
-
-            // Deshabilitamos el botón temporalmente para evitar múltiples envíos
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = "0.5";
-            submitBtn.style.cursor = "not-allowed";
-
-            const serviceID = 'service_fzae7xm';
-            const templateID = 'template_7vyh6o8';
-
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    alert("¡Mensaje enviado con éxito, Fiorella! 🚀"); 
-                    contactForm.reset(); // Limpia los campos del formulario
-                })
-                .catch((err) => {
-                    alert("Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.");
-                    console.error("Error:", err);
-                })
-                .finally(() => {
-                    // Restauramos el botón a su estado original sin cambiar el texto
-                    submitBtn.disabled = false;
-                    submitBtn.style.opacity = "1";
-                    submitBtn.style.cursor = "pointer";
-                });
-        });
-    }
-};

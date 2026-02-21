@@ -228,9 +228,16 @@ document.addEventListener("keydown", (e) => {
 
 nextBtn.addEventListener("click", goNextPage);
 prevBtn.addEventListener("click", goPrevPage);
-window.addEventListener('resize', () => { 
-    currentLocation = 1; 
-    updateUI(); 
+
+let lastWidth = window.innerWidth;
+
+window.addEventListener('resize', () => {
+    // Solo actuamos si el ancho cambió (ignora cambios de altura por barras de navegación)
+    if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        currentLocation = 1; 
+        updateUI();
+    }
 });
 
 // Inicialización

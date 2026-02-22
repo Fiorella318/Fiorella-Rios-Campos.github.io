@@ -354,28 +354,22 @@ ul {
 }
 
 
-/*SECCIÓN WELCOME */
+/*WELCOME */
 
 .welcome {
 text-align: left;
   position: relative;
-  /* overflow: visible;  <-- Cambia hidden por visible si quieres que el resplandor de las luces se vea completo */
-  min-height: 100vh;    /* Ocupa toda la altura de la pantalla para un efecto "Hero" impactante */
+  min-height: 100vh;    
   display: flex;
-  flex-direction: column; /* Permite que el contenedor y las stats se apilen verticalmente */
+  flex-direction: column; 
   justify-content: center;
   margin-bottom: 0;
-  padding: 60px 0;      /* Espacio para que no respire tan pegado al header */}
-
-  /* La esfera de luz en la esquina superior izquierda */
-
-  
-
+  padding: 60px 0;
+}
 
 .welcome::before {
   content: "";
   position: absolute;
-  /* Posición Final: Esquina superior izquierda */
   top: 10px; 
   left: -150px;
   
@@ -391,34 +385,35 @@ text-align: left;
   z-index: 0;
   pointer-events: none;
 
-  /* Animación: nombre | duración | curva | modo-final */
+  /* Animation: name | duration | curve | final-mode */
   animation: slideInLight 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Definición del movimiento */
+/* Definition of movement */
 @keyframes slideInLight {
   0% {
-    /* Empieza fuera de la pantalla a la izquierda y con menos brillo */
     transform: translateX(-100%) scale(0.8);
     opacity: 0;
   }
   100% {
-    /* Llega a su posición original (0) y se queda ahí */
     transform: translateX(0) scale(1);
     opacity: 1;
   }
 }
 
-
-/* --- CONTENEDOR DEL GRÁFICO --- */
+/* --- GRAPHIC CONTAINER --- */
 .welcome__image-wrapper {
-    position: relative;
-    max-width: 34rem;
-    width: 100%;
     height: auto;
     overflow: visible;
     border: none;
-    
+    position: relative;
+    width: 100%;
+    max-width: 500px; 
+    margin: 0 auto;
+    aspect-ratio: 5 / 4; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .blueprint-grid {
@@ -427,7 +422,7 @@ text-align: left;
     height: 100%;
     background-image: 
     linear-gradient(rgba(var(--gray-color), 0.03) 1px, transparent 1px);
-    background-size: 100% 40px; /* 100% de ancho, 40px de separación entre líneas */
+    background-size: 100% 40px; 
 }
 
 .line-path {
@@ -439,7 +434,7 @@ text-align: left;
     animation: drawPath 3s ease-out forwards;
 }
 
-/* Colores Neón */
+/* NEON COLORS */
 .dedication-path { stroke: #39ff14; filter: drop-shadow(0 0 8px #39ff14); }
 .practicing-path { stroke: #ffcc00; filter: drop-shadow(0 0 8px #ffcc00); animation-delay: 0.1s; }
 .learning-path { stroke: #00d2ff; filter: drop-shadow(0 0 8px #00d2ff); animation-delay: 0.2s; }
@@ -448,7 +443,7 @@ text-align: left;
     fill: #ffffff;
     opacity: 0;
     filter: drop-shadow(0 0 15px #ffffff);
-    animation: fadeInPoint 0.4s forwards 1.7s; /* Aparece justo en el choque */
+    animation: fadeInPoint 0.4s forwards 1.7s; /* It appears right at the crash */
 }
 
 .success-path {
@@ -461,7 +456,6 @@ text-align: left;
     animation: drawPath 1.2s ease-out forwards 2.1s;
 }
 
-/* Etiquetas con Iluminación */
 .line-label {
     font-size: 13px;
     font-weight: 700;
@@ -477,11 +471,11 @@ text-align: left;
 .glow-white { fill: #ffffff; text-shadow: 0 0 12px #ffffff; }
 
 .success-text {
-    animation: fadeInText 0.8s forwards; /* Usamos este nombre en el script */
-    animation-delay: 3s; /* El tiempo que definimos antes */
+    animation: fadeInText 0.8s forwards; /* We use this name in the script */
+    animation-delay: 3s; /* The time we defined earlier */
 }
 
-/* Animaciones */
+/* Animations*/
 @keyframes drawPath { to { stroke-dashoffset: 0; } }
 @keyframes fadeInText { to { opacity: 1; } }
 @keyframes fadeInPoint { 
@@ -489,31 +483,27 @@ text-align: left;
     to { opacity: 1; transform: scale(1); transform-origin: center; } 
 }
 
-
-
-
 .welcome__container{
-  display: grid;
-  /* Creamos 2 columnas para arriba y que los stats ocupen todo abajo */
-  grid-template-columns: 1fr 1fr; 
-  align-items: center;
-  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 20px;
+  align-items: center;
+  text-align: center;
 }
 
 .welcome__text-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Todo alineado a la izquierda */
-  text-align: left;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .welcome__title {
-  margin-bottom: 0.5rem; /* Pegadito al subtítulo */
+  margin-bottom: 0.5rem; 
 }
-
 
 .welcome__subtitle {
   margin-bottom: 1.5rem;
@@ -535,50 +525,50 @@ text-align: left;
 }
 
 .welcome__actions .button {
-  position: relative; /* Necesario para posicionar la línea respecto al texto */
+  position: relative; 
   color: var(--color-white);
-  text-decoration: none; /* Quitamos el subrayado nativo */
+  text-decoration: none; 
   font-weight: 600;
   padding: 4px 0;
   transition: color 0.3s ease;
   display: inline-block;
 }
 
-/* Creamos la línea "invisible" abajo */
+/* We create the "invisible" line below */
 .welcome__actions .button::after {
   content: '';
   position: absolute;
   width: 100%;
-  height: 2px; /* Grosor de la línea */
+  height: 2px; /* Line thickness */
   bottom: 0;
   left: 0;
-  background-color: var(--secondary-red); /* Tu rojo intenso */
+  background-color: var(--secondary-red); 
   
   
-  /* Aquí ocurre la magia: */
-  transform: scaleX(0); /* La línea empieza con tamaño 0 */
-  transform-origin: bottom left; /* Se dibuja desde la izquierda */
-  transition: transform 0.3s ease-out; /* Velocidad de la animación */
+  /*Magic */
+  transform: scaleX(0); /* The line starts with size 0 */
+  transform-origin: bottom left; /* Drawn from the left */
+  transition: transform 0.3s ease-out; /* Animation speed */
 }
 
-/* Animación al hacer Hover */
 .welcome__actions .button:hover {
-  color: var(--secondary-red); /* El texto también puede cambiar a rojo */
-  
+  color: var(--secondary-red);  
 }
 
 .welcome__actions .button:hover::after {
-  transform: scaleX(1); /* La línea crece al 100% */
+  transform: scaleX(1); /* The line grows to 100% */
 }
 
 .welcome__stats {
-  grid-column: 1 / span 2; /* Cruza de lado a lado */
+  grid-column: 1 / span 2; /* Cross from side to side */
   display: flex;
-  justify-content: space-between; /* Los separa equitativamente */
-  width: 100%;
+  justify-content: space-between; /* Separates them equally */
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(var(--gray-color), 0.1); /* Línea divisoria sutil */
+  border-top: 1px solid rgba(var(--gray-color), 0.1); /* Subtle dividing line */
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
 
 .stat {
@@ -590,28 +580,27 @@ text-align: left;
   font-size: 1.8rem;
   font-weight: 650;
   color: var(--color-white);
-  /* Brillo intenso como foco LED */
   text-shadow: 0 0 15px rgba(var(--primary-red), 0.9); 
   margin-bottom: 0.5rem;
   animation: pulse 1s ease-in-out infinite;
-  will-change: transform, text-shadow; /* Optimización para el navegador */
+  will-change: transform, text-shadow; /* Browser optimization */
 }
+
 @keyframes pulse {
   0% {
     transform: scale(1);
     text-shadow: 0 0 15px rgba(var(--primary-red), 0.9);
   }
   50% {
-    transform: scale(1.5); /* Crece un 10% */
+    transform: scale(1.5); 
     text-shadow: 0 0 25px rgba(var(--primary-red), 1), 
-                 0 0 10px rgba(var(--primary-red), 0.6); /* Brillo más intenso */
+                 0 0 10px rgba(var(--primary-red), 0.6); 
   }
   100% {
     transform: scale(1);
     text-shadow: 0 0 15px rgba(var(--primary-red), 0.9);
   }
 }
-
 
 .stat__label {
   font-size: 0.875rem; /* 14px */
@@ -621,90 +610,108 @@ text-align: left;
   font-weight: 500;
 }
 
-
-/*BLOG SECTION*/
-
-.blog__post {
-    display: flex; /* Alinea imagen y contenido en fila */
-    gap: 2rem;    /* Espacio entre la foto y el texto */
-    align-items: flex-start;
-    margin-bottom: 4rem;
-    padding: 20px;
-    border-radius: var(--radius-lg);
-    transition: background 0.3s ease;
-    flex-direction: row-reverse;
+.skills-chart {
+    width: 100%;
+    height: auto; /* Allows the SVG to scale with the container */
+    display: block;
 }
 
-/* Controlamos el tamaño de la columna de la imagen */
+
+/*BLOG SECTION*/
+.blog__post {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column; 
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding: 15px;
+    border-radius: var(--radius-lg);
+    transition: background 0.3s ease;
+    border-bottom: 1px solid rgba(255, 59, 63, 0.1); 
+}
+
 .post__image-container {
-    flex: 0 0 300px; /* La imagen no se encoge y mide 300px de ancho */
-    height: 200px;
+    flex: 0 0 300px; 
+    width: 100%; 
+    height: 220px; 
     overflow: hidden;
     border-radius: var(--radius-md);
-    border: 1px solid rgba(var(--primary-red), 0.2 ) ;
-    background-color: inherit;
+    border: 1px solid rgba(var(--primary-red), 0.2);
+    background-color: rgba(var(--primary-red), 0.05); 
 }
 
 .post__img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover; 
     transition: transform 0.5s ease;
 }
 
-/* Controlamos la columna del texto */
 .post__content {
-    flex: 1; /* El texto ocupa todo el espacio restante */
+    justify-content: center;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .post__title {
-    margin-top: 0; /* Quitamos el margen superior para que alinee con la imagen */
+    margin-top: 0; 
     margin-bottom: 0.5rem;
 }
 
-/* Hover effect general del post */
+/* Hover effects */
 .blog__post:hover {
-    background: rgba(var(--gray-color), 0.03);
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .blog__post:hover .post__img {
     transform: scale(1.05);
 }
 
-.post__link:hover {
-  color: var(--secondary-red);
+.post__link {
+    transition: color 0.3s ease;
+    font-weight: 500;
 }
 
+.post__link:hover {
+    color: var(--color-accent);
+}
+
+.post__date {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-gray-light);
+    opacity: 0.8;
+}
 
 
 /*ABOUT ME */
-.about {
-text-align: left;
-  position: relative;
-  /* overflow: visible;  <-- Cambia hidden por visible si quieres que el resplandor de las luces se vea completo */
-  min-height: 100vh;    /* Ocupa toda la altura de la pantalla para un efecto "Hero" impactante */
-  display: flex;
-  flex-direction: column; /* Permite que el contenedor y las stats se apilen verticalmente */
-  justify-content: center;
+.about {   
   margin-bottom: 0;
-  padding: 60px 0;      /* Espacio para que no respire tan pegado al header */}
+    text-align: left;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 0;
+}
 
 .about__container {
     display: flex;
-    align-items: flex-start;
-    flex-direction: row-reverse;
-    gap: 2rem;
-    
+    flex-direction: column; 
+    align-items: center; 
+    gap: 3rem;
+    padding: 0 20px;
 }
-
 
 .about__image-container {
   flex: 0.25 0 300px; 
-  position: relative;
-  height: 450px;
+    width: 100%;
+    max-width: 300px; 
+    height: 300px; 
+    position: relative;
 }
 
 .about__image {
@@ -712,17 +719,18 @@ text-align: left;
   height: 100%;
   object-fit:cover;
   border-radius: var(--radius-full);
-  /* BORDE: Un borde sutil que ayuda a definir la forma antes del brillo */
+  /* BORDER: A subtle border that helps define the shape before the highlight */
   border: 2px solid rgba(var(--secondary-red), 0.5);
   
-  /* SOMBRA: Usamos tu variable de glow para que ilumine hacia afuera */
+  /* SHADOW: We use your glow variable to make it shine outwards */
   box-shadow: var(--shadow-glow);
   
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .about__content {
-  flex: 1;
+    flex: 1;
+    width: 100%;
 }
 
 .about__image:hover {
@@ -730,17 +738,16 @@ text-align: left;
   box-shadow: 0 0 40px 10px rgba(var(--primary-red), 0.6);
 }
 
-.about__quote{
-  background-color: var(--color-gray-dark);
-  padding: 2rem;
-  margin: 2.5rem 0;
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-  border-left: 4px solid var(--secondary-red);
+.about__quote {
+    background-color: var(--color-gray-dark);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    border-left: 4px solid var(--secondary-red);
 }
 
 .about__quote-text {
   font-style: italic;
-  /* El 0.8 va AFUERA del var, después de la coma */
   color: rgba(var(--blue-light), 0.85); 
   
 }
@@ -751,17 +758,14 @@ text-align: left;
   text-align: right;
   font-weight: 500;
   letter-spacing: 0.05em;
-  margin-top: 1rem; /* Separa el nombre de la frase */
-  color: var(--color-white); /* Para que resalte un poco más que la cita */
+  margin-top: 1rem; 
+  color: var(--color-white); 
 }
-
-
 
 .about__principles {
   width: 100%;
   padding-top: 2rem;
-  border-top: 1px solid rgba(var(--gray-color), 0.1); /* Línea divisoria sutil */
-  
+  border-top: 1px solid rgba(var(--gray-color), 0.1); 
   margin-top: 3rem;
 }
 
@@ -771,7 +775,6 @@ text-align: left;
 }
 
 .principles__list {
-  /* NUEVO: Grid para valores */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
@@ -780,9 +783,7 @@ text-align: left;
 
 .principles__item {
   padding: 1.5rem;
-  /* Cambiamos el blanco por un negro con transparencia */
   background-color: rgba(var(--gray-color), 0.03); 
-  /* Borde sutil rojo en lugar de gris */
   border: 1px solid rgba(var(--primary-red), 0.2); 
   border-radius: var(--radius-md);
   display: flex;
@@ -790,11 +791,9 @@ text-align: left;
   gap: 0.75rem;
   text-align: center;
   transition: transform 0.3s ease, border-color 0.3s ease;
-  
 }
 
 .principles__item:hover {
-  /* Efecto de elevación sutil */
   transform: translateY(-5px);
   border-color: rgba(var(--primary-red), 0.6);
   color: var(--color-white);
@@ -807,7 +806,6 @@ text-align: left;
   font-size: 1.0625rem;
 }
 .principles__item span {
-  /* Gris claro para que sea legible sobre fondo oscuro */
   color: var(--color-gray-light); 
   font-size: 0.9375rem;
 }
@@ -817,7 +815,7 @@ text-align: left;
   margin-right: 0.75rem;
   display: inline-block;
   animation: tilt 2s ease-in-out infinite;
-  transform-origin: bottom center; /* Se mueve desde la base */
+  transform-origin: bottom center; 
 }
 
 @keyframes tilt {
@@ -828,7 +826,6 @@ text-align: left;
 
 
 /*SKILLS*/
-
 .skills {
   padding: 20px 0;
 }
@@ -1564,50 +1561,6 @@ text-align: left;
 
 
 
-/* --- 1. Ajuste del Contenedor del Gráfico (Para que no desaparezca) --- */
-.welcome__image-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 500px; /* Tamaño máximo en PC */
-    margin: 0 auto;
-    /* Esto es clave: mantiene la proporción 5:4 del SVG para que no desaparezca */
-    aspect-ratio: 5 / 4; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.skills-chart {
-    width: 100%;
-    height: auto; /* Permite que el SVG escale con el contenedor */
-    display: block;
-}
-
-/* --- 2. Layout Responsive (Mobile First mejorado) --- */
-
-/* Por defecto (Móvil): Una sola columna centrada */
-.welcome__container {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    padding: 20px;
-    align-items: center;
-    text-align: center;
-}
-
-.welcome__text-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Stats en móvil: uno debajo de otro */
-.welcome__stats {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-}
 
 /* --- 3. El salto a PC (Tu diseño original) --- */
 /* Cuando la pantalla es mayor a 1024px (Laptops/Desktop) */
@@ -1637,40 +1590,6 @@ text-align: left;
     }
 }
 
-/* --- ESTILO BASE (Mobile First) --- */
-
-.blog__post {
-    display: flex;
-    flex-direction: column; /* En móvil: imagen arriba, texto abajo */
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-    padding: 15px;
-    border-radius: var(--radius-lg);
-    transition: background 0.3s ease;
-    border-bottom: 1px solid rgba(255, 59, 63, 0.1); /* Separador sutil en móvil */
-}
-
-.post__image-container {
-    width: 100%; /* Ocupa todo el ancho en móvil */
-    height: 220px; /* Altura fija para que todas las tarjetas se vean iguales */
-    overflow: hidden;
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(var(--primary-red), 0.2);
-    background-color: rgba(var(--primary-red), 0.05); /* Un fondo leve por si la imagen falla */
-}
-
-.post__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cambiado a cover para que llene el contenedor estéticamente */
-    transition: transform 0.5s ease;
-}
-
-.post__content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
 
 /* --- AJUSTE PARA PANTALLAS GRANDES (Desktop / Laptops) --- */
 @media (min-width: 992px) {
@@ -1692,73 +1611,8 @@ text-align: left;
     }
 }
 
-/* Hover effects (DRY) */
-.blog__post:hover {
-    background: rgba(255, 255, 255, 0.03);
-}
 
-.blog__post:hover .post__img {
-    transform: scale(1.05);
-}
 
-.post__link {
-    transition: color 0.3s ease;
-    font-weight: 500;
-}
-
-.post__link:hover {
-    color: var(--color-accent);
-}
-
-.post__date {
-    display: block;
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
-    color: var(--color-gray-light);
-    opacity: 0.8;
-}
-
-/* --- ESTILO BASE (Mobile First) --- */
-
-.about {
-    text-align: left;
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px 0;
-}
-
-.about__container {
-    display: flex;
-    flex-direction: column; /* Móvil: Imagen arriba, texto abajo */
-    align-items: center; /* Centramos la imagen en móvil */
-    gap: 3rem;
-    padding: 0 20px;
-}
-
-.about__image-container {
-    width: 100%;
-    max-width: 300px; /* Evitamos que la foto crezca demasiado en móviles grandes */
-    height: 300px; /* Forma más compacta para móvil */
-    position: relative;
-}
-
-.about__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: var(--radius-full);
-    border: 2px solid rgba(var(--secondary-red), 0.5);
-    box-shadow: var(--shadow-glow);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.about__content {
-    flex: 1;
-    width: 100%;
-}
 
 /* --- AJUSTE PARA PANTALLAS GRANDES (Desktop / Laptops) --- */
 @media (min-width: 1024px) {
@@ -1780,16 +1634,7 @@ text-align: left;
     }
 }
 
-/* --- AJUSTES DE COMPONENTES INTERNOS --- */
 
-/* Quote: Ajuste de padding para móviles */
-.about__quote {
-    background-color: var(--color-gray-dark);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-    border-left: 4px solid var(--secondary-red);
-}
 
 /* Principios: Ya usaste auto-fit, así que es naturalmente responsive, 
    solo ajustamos el espaciado en móvil */

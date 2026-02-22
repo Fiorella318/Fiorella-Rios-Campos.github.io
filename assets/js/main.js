@@ -1,19 +1,18 @@
-
-
+//SUBMIT FORM
 document.addEventListener("DOMContentLoaded", () => {
     const contactForm = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Detiene el error 405 y el refresh
+            event.preventDefault(); // Stops the 405 error and the refresh
 
-            // Bloqueamos el botón sin cambiar el texto
+            // We block the button without changing the text
             submitBtn.disabled = true;
             submitBtn.style.cursor = "wait";
 
-            const serviceID = 'service_fzae7xm'; // De tu captura
-            const templateID = 'template_7vyh6o8'; // De tu captura
+            const serviceID = 'service_fzae7xm'; 
+            const templateID = 'template_7vyh6o8';
 
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
@@ -32,15 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
+//BELL SOUND
 document.addEventListener("DOMContentLoaded", () => {
     const successLabel = document.querySelector(".success-text");
     const sound = document.getElementById("success-sound");
 
-    // Detectamos cuando termina la animación de CSS
+   // We detect when the CSS animation ends
     successLabel.addEventListener("animationend", (event) => {
-        // Solo si la animación que terminó es la de 'fadeIn' (o la que uses)
+        // Only if the animation that finished is the 'fadeIn' animation (or the one you use)
         if (event.animationName === "fadeInText" || event.animationName === "fadeIn") {
-            sound.volume = 0.75; // Ajusta el volumen (0.0 a 1.0)
+            sound.volume = 0.75;
             sound.play().catch(error => {
                 console.log("El navegador bloqueó el audio automático hasta que el usuario interactúe.");
             });
@@ -48,22 +49,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Añade esto a tu JavaScript actual
+//Extra
 document.addEventListener("click", () => {
     const sound = document.getElementById("success-sound");
-    // Esto "despierta" el motor de audio del navegador
+    // This "wakes up" the browser's audio engine
     sound.play().then(() => {
-        sound.pause(); // Lo pausamos rápido, solo queremos permiso
+        sound.pause(); // We paused it quickly, we just want permission
         sound.currentTime = 0;
     }).catch(e => console.log("Audio esperando interacción"));
-}, { once: true }); // Solo se ejecuta la primera vez que hacen clic
+}, { once: true }); // It only runs the first time they click
 
 
-//PROJECTS:
-/* --- CONFIGURACIÓN DE PROYECTOS --- */
-/* --- PROYECTOS: LÓGICA RESPONSIVA --- */
-/* --- CONFIGURACIÓN DE PROYECTOS --- */
-/* --- CONFIGURACIÓN DE PROYECTOS COMPLETA --- */
+//PROJECTS
 const bookContainer = document.querySelector("#book-container");
 const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
@@ -72,11 +69,11 @@ const papers = document.querySelectorAll(".paper");
 let currentLocation = 1;
 const isMobile = () => window.innerWidth < 1024;
 
-// 1. TYPING ORIGINAL: Guardamos y vaciamos textos al inicio
+// 1. ORIGINAL TYPING: We save and empty the text at the beginning
 const textStorage = new Map();
 document.querySelectorAll('.project-description').forEach(el => {
     textStorage.set(el, el.innerText);
-    el.innerText = ''; // Se vacía para que el efecto empiece de cero
+    el.innerText = ''; // It is emptied so that the effect starts from scratch.
 });
 
 function getMaxLocation() {
@@ -101,7 +98,7 @@ function updateUI() {
             }
         });
     } else {
-        // Lógica de libro para PC
+        // Logic book for PC
         if (currentLocation === 1) bookContainer.classList.remove("open");
         else bookContainer.classList.add("open");
 
@@ -116,26 +113,27 @@ function updateUI() {
         });
     }
 
-    // Visibilidad de botones
+    // Button visibility
     prevBtn.classList.toggle("visible", currentLocation > 1);
     nextBtn.classList.toggle("visible", currentLocation < max);
     
-    // Disparar typing con un pequeño delay para la transición
+    // Trigger typing with a small delay for the transition
     setTimeout(startTypingEffect, mobile ? 100 : 700);
 }
 
-// 2. FUNCIÓN JUMP PARA EL INDEX
+// 2. JUMP FUNCTION FOR THE INDEX
 function jumpToPage(paperIndex, isBack = false) {
     if (isMobile()) {
-        // En móvil calculamos el paso exacto (cada cara es un paso)
-        // Paso 1: Portada (Paper 1 Front)
-        // Paso 2: Index (Paper 1 Back)
-        // Paso 3: Proyecto 1 (Paper 2 Front)
-        // Paso 4: Proyecto 2 (Paper 2 Back) ...
+        // On mobile, we calculate the exact step (each side is one step)
+        // Step 1: Cover (Paper 1 Front)
+        // Step 2: Index (Paper 1 Back)
+        // Step 3: Project 1 (Paper 2 Front)
+        // Step 4: Project 2 (Paper 2 Back) ...
         currentLocation = (paperIndex * 2) - (isBack ? 0 : 1);
     } else {
-        // En PC simplemente vamos a la hoja. 
-        // Si la hoja es > 1, el libro se abre automáticamente en updateUI()
+        // On PC, simply go to the sheet.
+
+        // If the sheet number is greater than 1, the workbook will automatically open in updateUI()
         currentLocation = paperIndex;
     }
     
@@ -145,29 +143,30 @@ function jumpToPage(paperIndex, isBack = false) {
 function startTypingEffect() {
 
     
-    // Buscamos las descripciones que deberían estar visibles según el estado del libro
+    // We look for the descriptions that should be visible according to the book's condition
     let activeDescs = [];
     
     if (isMobile()) {
-        // En Móvil: Solo la cara que tiene la clase face-active
+        // On Mobile: Only the face that has the face-active class
         activeDescs = document.querySelectorAll('.face-active .project-description');
     } else {
-        // EN PC: Seleccionamos DOS posibles descripciones visibles:
-        // 1. La cara BACK de un papel que ya se volteó (Página Izquierda)
-        // 2. La cara FRONT del papel que sigue (Página Derecha)
+        // ON PC: We select TWO possible visible descriptions:
+        // 1. The BACK side of a paper that has already been turned over (Left Page)
+        // 2. The FRONT side of the next paper (Right Page)
         
         const allPapers = document.querySelectorAll('.paper');
         allPapers.forEach((paper, index) => {
             const isFlipped = paper.classList.contains('flipped');
             
-            // Si el papel está volteado, la cara visible es la de ATRÁS (Izquierda)
+            // If the paper is turned over, the visible side is the BACK (Left)
             if (isFlipped) {
                 const backDesc = paper.querySelector('.back .project-description');
                 if (backDesc) activeDescs.push(backDesc);
             } 
             
-            // Si el papel es el SIGUIENTE al actual (el que está arriba a la derecha)
-            // El papel actual es 'currentLocation - 1'
+            // If the role is the NEXT one to the current one (the one at the top right)
+
+            // The current role is 'currentLocation - 1'
             if (index === currentLocation - 1) {
                 const frontDesc = paper.querySelector('.front .project-description');
                 if (frontDesc) activeDescs.push(frontDesc);
@@ -176,7 +175,7 @@ function startTypingEffect() {
     }
 
     activeDescs.forEach(el => {
-        // Evitamos reiniciar si ya está escribiendo ese mismo texto
+        // We avoid restarting if you are already typing that same text.
         if (el.getAttribute('data-is-typing') === 'true') return;
         runTyping(el);
     });
@@ -184,10 +183,10 @@ function startTypingEffect() {
 }
 
 function runTyping(el) {
-    const fullText = el.getAttribute('data-text'); // Leemos del atributo "escondido"
+    const fullText = el.getAttribute('data-text'); // We read from the "hidden" attribute
     if (!fullText) return;
 
-    // Limpieza total
+    // Total cleaning
     if (el.typingInterval) clearInterval(el.typingInterval);
     el.innerText = '';
     el.setAttribute('data-is-typing', 'true');
@@ -220,7 +219,7 @@ function goPrevPage() {
     }
 }
 
-// 3. EVENTOS DE TECLADO REPARADOS
+// 3. KEYBOARD EVENTS
 document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") goNextPage();
     else if (e.key === "ArrowLeft") goPrevPage();
@@ -232,7 +231,7 @@ prevBtn.addEventListener("click", goPrevPage);
 let lastWidth = window.innerWidth;
 
 window.addEventListener('resize', () => {
-    // Solo actuamos si el ancho cambió (ignora cambios de altura por barras de navegación)
+    // We only act if the width changed (ignores height changes due to navigation bars)
     if (window.innerWidth !== lastWidth) {
         lastWidth = window.innerWidth;
         currentLocation = 1; 
@@ -240,7 +239,7 @@ window.addEventListener('resize', () => {
     }
 });
 
-// Inicialización
+// Initialization
 updateUI();
 
 

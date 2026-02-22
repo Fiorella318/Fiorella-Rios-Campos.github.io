@@ -44,8 +44,6 @@ body {
   
 }
 
-/*AHORA*/
-
 h1,
 h2,
 h3,
@@ -54,7 +52,7 @@ h4 {
   font-weight: 700;
   line-height: 1.2;
   color: var(--color-white);
-  /*Letter-spacing para títulos */
+  /*Letter-spacing for titles*/
   letter-spacing: -0.02em;
 }
 
@@ -95,53 +93,54 @@ strong {
   font-weight: 600px;
 }
 
+/*ANIMATION ABOUT-ME*/
 b {
     color: var(--blue-light);
     display: inline-block;
     position: relative;
     opacity: 0;
-    /* Usamos 'ease-out' para que la caída sea rápida al principio */
+    /* We use 'ease-out' to make the fall quick at the beginning */
     animation: ballBounce 1.2s ease-out forwards;
 }
 
-/* La primera b cae al instante (0s) */
+/* The first b falls instantly (0s) */
 p:nth-of-type(1) b {
     animation-delay: 0s;
 }
 
-/* La segunda b espera a que la primera casi termine su primer impacto */
+/* The second b waits until the first one has almost finished its first impact */
 p:nth-of-type(2) b {
     animation-delay: 0.4s;
 }
 
-/* La tercera b espera un poco más */
+/* The third b will have to wait a little longer */
 p:nth-of-type(3) b {
     animation-delay: 0.8s;
 }
 
 @keyframes ballBounce {
     0% {
-        transform: translateY(-200px); /* Desde el header */
+        transform: translateY(-200px); /* From the header */
         opacity: 0;
     }
     30% {
-        transform: translateY(0);      /* Primer impacto en el suelo */
+        transform: translateY(0);      /* First impact on the ground */
         opacity: 0.3;
     }
     50% {
-        transform: translateY(-25px);  /* Primer rebote hacia arriba */
+        transform: translateY(-25px);  /* First bounce upwards */
         opacity: 0.5;
     }
     70% {
-        transform: translateY(0);      /* Segundo impacto */
+        transform: translateY(0);      /* Second Impact */
         opacity: 0.7;
     }
     85% {
-        transform: translateY(-10px);  /* Segundo rebote (más pequeño) */
+        transform: translateY(-10px);  /* Second bounce (smaller) */
         opacity: 0.85;
     }
     100% {
-        transform: translateY(0);      /* Se queda quieta */
+        transform: translateY(0);      /* It stays still */
         opacity: 1;
     }
 }
@@ -152,7 +151,7 @@ em {
   font-style: italic;
 }
 
-/* NUEVO: Párrafos introductorios más grandes */
+/*Larger introductory paragraphs*/
 .welcome__description,
 .about__text,
 .skills__container,
@@ -165,21 +164,10 @@ em {
 a {
   color: var(--color-white);
   text-decoration: none;
-  /*Transición suave (sin animación completa aún) */
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
 
-/*a:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-}
-
-a:active {
-  color: #1e40af;
-}
-*/
 
 ul {
   list-style: none;
@@ -192,21 +180,23 @@ ul {
   background-color: var(--bg-color);
   top: 0;
   z-index: 1000;
-  padding: 24px 0 0;
   border-bottom: 1px solid rgba(255, 59, 63, 0.3);
   box-shadow: var(--shadow-glow);
   width: 100%;
+  padding: 1.5rem 0 0.5rem; 
 }
 
 .header__container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 2rem;
   margin: 0 auto;
-  padding: 0 20px;
   margin-bottom: 0.75rem;
+  flex-direction: column; /*Stacked on mobile*/
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 0 20px;
 }
 
 .header__brand {
@@ -216,27 +206,33 @@ ul {
 
 .header__name {
   color: var(--color-white);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   letter-spacing: -0.03em;
-  font-size: 2rem;
+  font-size: 1.5rem; /* Reduced for mobile */
 }
 
+
 .header__tagline {
-  font-size: 0.875rem; /* 14px */
-  /* NUEVO: Espaciado de letras para subtítulos */
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-weight: 500;
+    font-size: 0.75rem; 
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-gray-light);
 }
 
 .nav {
   text-align: left;
+  width: 100%; /* Use the full width to center the list */
 }
 
 .nav__list {
-  display: flex;
-    gap: 1rem;
     align-items: center;
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 0.5rem; 
+    padding: 0;
+    list-style: none;
 }
 
 .nav__item {
@@ -245,16 +241,17 @@ ul {
 }
 
 .nav__link {
-  padding: 8px 12px;
   display: inline-block;
   font-weight: 500;
-  /* NUEVO: Mejor espaciado */
-  font-size: 0.9375rem; /* 15px */
   letter-spacing: 0.01em;
-  transition: all 0.3s ease; /* Suaviza la aparición del brillo */
-  border-radius: var(--radius-full); /* Preparamos la forma redonda */
-  
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 50px;
 }
+
 
 .nav__link:hover {
   color: var(--secondary-red);
@@ -262,20 +259,18 @@ ul {
   transform: translateY(-5px);
 }
 
-
-
 .nav__link--active {
   font-weight: 600;
   
-  /* Fondo de la cápsula (Rojo vivo sutil) */
+  /* Capsule background (Subtle bright red) */
   background-color: rgba(var(--primary-red), 0.25); 
 
-  /* Sombra circular (Glow intenso) */
+  /* Circular shadow (Intense Glow) */
   box-shadow: 
-    0 0 15px 2px rgba(var(--primary-red), 0.6), /* Brillo núcleo */
-    0 0 30px 5px rgba(var(--primary-red), 0.2); /* Resplandor expandido */
+    0 0 15px 2px rgba(var(--primary-red), 0.6), /* Core brightness */
+    0 0 30px 5px rgba(var(--primary-red), 0.2); /* Expanded glow */
 
-  /* Brillo en las letras para que parezcan encendidas */
+  /* Add brightness to the letters to make them appear lit */
   text-shadow: 0 0 8px rgba(var(--primary-red), 0.8);
 }
 
@@ -298,19 +293,19 @@ ul {
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 20px 100px;
-
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  
 }
+
 
 /*FOOTER */
 .footer {
-  background: var(--color-gray-dark);
   color: var(--color-gray-light);
-  padding: 19px 0 0;
   text-align: center;
+  background: var(--color-gray-dark, #111);
+  padding: 3rem 0 1.5rem; 
+  margin-top: 4rem;
 }
 
 .footer__container {
@@ -319,24 +314,27 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
-
 
 .footer__list {
   display: flex;
-  gap: 1.5rem;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0;
+  gap: 1.2rem;
+  list-style: none;
+  padding: 0;
 }
 
 .footer__link {
   color: var(--color-white);
   margin: 0;
   display: inline-block;
-  font-size: 0.9375rem;
   font-weight: 400;
+  color: var(--color-white);
+  font-size: 0.9rem;
+  transition: color 0.3s;
 }
 
 .footer__link:hover {
@@ -354,7 +352,6 @@ ul {
   line-height: 1.5;
   margin-top: -1.25rem;
 }
-
 
 
 /*SECCIÓN WELCOME */
@@ -1976,98 +1973,9 @@ text-align: left;
     }
 }
 
-/* --- HEADER --- */
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: var(--bg-color);
-    padding: 1.5rem 0 0.5rem; /* Ajustado para mejor balance */
-    border-bottom: 1px solid rgba(255, 59, 63, 0.3);
-    box-shadow: var(--shadow-glow);
-    width: 100%;
-}
 
-.header__container {
-    display: flex;
-    flex-direction: column; /* Apilado en móvil */
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
-    padding: 0 20px;
-}
 
-.header__brand {
-    margin-bottom: 0;
-}
 
-.header__name {
-    color: var(--color-white);
-    margin-bottom: 4px;
-    letter-spacing: -0.03em;
-    font-size: 1.5rem; /* Reducido para móvil */
-}
-
-.header__tagline {
-    font-size: 0.75rem; /* Más compacto en móvil */
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: var(--color-gray-light);
-}
-
-/* --- NAVEGACIÓN --- */
-.nav {
-    width: 100%; /* Ocupa todo el ancho para centrar la lista */
-}
-
-.nav__list {
-    display: flex;
-    justify-content: center; /* Centrado en móvil */
-    flex-wrap: wrap; /* Permite que los links bajen si no caben */
-    gap: 0.5rem; /* Espacio reducido entre links en móvil */
-    padding: 0;
-    list-style: none;
-}
-
-.nav__link {
-    padding: 6px 10px;
-    font-size: 0.85rem;
-    color: var(--color-white);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border-radius: 50px;
-}
-
-/* --- FOOTER --- */
-.footer {
-    background: var(--color-gray-dark, #111);
-    color: var(--color-gray-light);
-    padding: 3rem 0 1.5rem; /* Más espacio interno */
-    margin-top: 4rem;
-}
-
-.footer__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-.footer__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.2rem;
-    list-style: none;
-    padding: 0;
-}
-
-.footer__link {
-    color: var(--color-white);
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
 
 /* --- MEDIA QUERIES (Ajustes para Desktop) --- */
 @media (min-width: 768px) {

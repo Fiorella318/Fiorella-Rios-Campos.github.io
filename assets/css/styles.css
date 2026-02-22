@@ -827,7 +827,7 @@ text-align: left;
 
 /*SKILLS*/
 .skills {
-  padding: 20px 0;
+    padding: 40px 20px; 
 }
 
 .skills__container {
@@ -848,9 +848,12 @@ text-align: left;
   font-weight: 400;
 }
 
-/* --- Lista de Habilidades --- */
+/* --- skills list --- */
 .skills__list {
-  margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; 
+    margin-bottom: 3rem;
 }
 
 .skill {
@@ -859,9 +862,8 @@ text-align: left;
   grid-template-rows: auto auto;
   gap: 0.5rem;
   align-items: center;
-  margin-bottom: 2rem; /* Espacio entre cada bloque de habilidad */
+  margin-bottom: 1.5rem;
 }
-
 
 .skill__name {
   grid-column: 1;
@@ -880,16 +882,16 @@ text-align: left;
 }
 
 .skill__bar {
-  grid-column: 1 / -1; /* Ocupa las dos columnas */
+  grid-column: 1 / -1; /* Occupies both columns */
   grid-row: 2;
-  height: 12px; /* Las barras modernas se ven mejor un poco más finas */
+  height: 12px; 
   background-color: rgba(var(--gray-color), 0.1);
   border-radius: 10px;
   position: relative;
   overflow: hidden;
 }
 
-/* --- Modificadores de Color y Ancho --- */
+/* --- Color and Width Modifiers --- */
 .skill__progress--html {
   --index: 0;
   width: 100%;
@@ -939,14 +941,14 @@ text-align: left;
   background: linear-gradient(90deg, #61dafb 0%, #a5f3fc 100%);
 }
 
-/* --- Animaciones --- */
+/* --- Animations --- */
 
-/* 1. Llenado de la barra */
+/* 1. Filling the bar */
 @keyframes fillProgress {
   from { width: 0; }
 }
 
-/* 2. Efecto de Brillo (Shimmer) */
+/* 2. Shimmer Effect */
 .skill__progress {
   position: absolute;
   top: 0;
@@ -954,14 +956,11 @@ text-align: left;
   height: 100%;
   border-radius: 12px;
   animation: fillProgress 1.5s ease-out forwards;
-  animation-delay: calc(var(--index, 0) * 0.2s);
-  
-  /* CLAVE: Ponemos overflow hidden aquí para que el destello 
-     no se vea en la parte gris de la derecha */
+  animation-delay: calc(var(--index, 0) * 0.2s); 
   overflow: hidden; 
 }
 
-/* --- El Destello (Shimmer) --- */
+/* --- (Shimmer) --- */
 .skill__progress::after {
   content: "";
   position: absolute;
@@ -972,10 +971,10 @@ text-align: left;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.4), /* Un poco más de brillo */
+    rgba(255, 255, 255, 0.4),
     transparent
   );
-  /* El destello ahora solo viajará por el ancho de .skill__progress */
+  /* The flash will now only travel the width of .skill__progress */
   animation: shimmer 2.5s infinite;
   animation-delay: 1.5s; 
 }
@@ -988,40 +987,33 @@ text-align: left;
 @media (min-width: 992px) {
   .skills__list {
     display: grid;
-    /* Crea dos columnas iguales */
     grid-template-columns: 1fr 1fr; 
-    /* Espacio entre las columnas */
     column-gap: 4rem; 
     row-gap: 1rem;
   }
 }
 
 .learning {
-  /* Fondo base con los dos resplandores en las esquinas */
+  /* Base background with the two glows in the corners */
   background: 
-    radial-gradient(circle at top left, rgba(128, 0, 32, 0.25) 0%, transparent 55%),
-    radial-gradient(circle at bottom right, rgba(128, 0, 32, 0.15) 0%, transparent 55%),
-    #000000;
+        radial-gradient(circle at top left, rgba(128, 0, 32, 0.25) 0%, transparent 55%),
+        radial-gradient(circle at bottom right, rgba(128, 0, 32, 0.15) 0%, transparent 55%),
+        #000000;
 
   border: 1px solid rgba(255, 255, 255, 0.03);
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-  transition: all 0.5s ease; /* Suaviza el cambio de brillo */
-
-  /* Combinamos todas las sombras en una sola declaración */
-  box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.6),           /* Sombra de profundidad */
-    -10px -10px 30px rgba(128, 0, 32, 0.05), /* Aura superior */
-    10px 10px 30px rgba(128, 0, 32, 0.05);   /* Aura inferior */
+  
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    transition: all 0.5s ease;
 }
 
 
 .learning:hover {
-  /* Al pasar el mouse, el rojo vino se vuelve un poquito más intenso */
   background: linear-gradient(135deg, rgba(128, 0, 32, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  transform: translateY(-5px); /* Un pequeño salto hacia arriba para dar feedback */
+  transform: translateY(-5px); 
 }
 
 .learning__container {
@@ -1031,15 +1023,14 @@ text-align: left;
 .learning__title {
     margin-bottom: 2rem;
     margin-top: 0.25rem;
-    
 }
-
 
 .learning__list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     list-style-type: disc; 
     gap: 1rem;
+    padding-left: 1.2rem; 
 }
 
 .learning__item {
@@ -1048,86 +1039,60 @@ text-align: left;
     line-height: 1.6;
 }
 
+
 /*CONTACT*/
 .contact {
-  padding: 20px 0;
+    padding: 40px 20px;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(128, 0, 32, 0.08) 0%, transparent 70%);
 }
 
 .contact__container {
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
 .contact__title {
   text-align: center;
 }
 
 .contact__description {
-     /* Evita que el texto se estire demasiado y sea difícil de leer */
-    margin: 0 auto 3rem auto; /* Centra horizontalmente y da espacio abajo */
     text-align: center;
     color: var(--color-gray-light, #a1a1a1);
     line-height: 1.6;
+    margin: 0 auto 2rem auto;
+    max-width: 600px; 
 }
 
-/*CONTACT*/
-.contact {
-  padding: 20px 0;
-}
-
-.contact__container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.contact__title {
-  text-align: center;
-}
-
-.contact__description {
-  text-align: center;
-  color: var(--color-gray-light, #666666);
-  margin-bottom: 3rem;
-}
-
-/*CONTACT*/
-.contact {
-  padding: 20px 0;
-}
-
-.contact__container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.contact__title {
-  text-align: center;
-}
-
-.contact__description {
-  text-align: center;
-  color: var(--color-gray-light, #666666);
-  margin-bottom: 3rem;
-}
-
-/* --- Contenedor del Formulario --- */
+/* --- Form Container --- */
 .contact__message {
+    width: 100%;
     max-width: 600px;
-    margin: 3rem auto; /* Centra el bloque horizontalmente */
-    background: rgba(255, 255, 255, 0.03); /* Un poco más claro */
-    border: 1px solid rgba(128, 0, 32, 0.2); /* Borde vino más visible */
-    padding: 2.5rem;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(128, 0, 32, 0.2);
+    padding: 1.5rem; 
     border-radius: 20px;
-    backdrop-filter: blur(10px); /* Efecto cristal */
+    backdrop-filter: blur(10px);/* Cristal effect */
 }
 
-/* --- Grid del Formulario --- */
+/* --- Form --- */
 .contact__form {
-    display: grid;
-    /* Creamos una columna que ocupa todo el ancho */
-    grid-template-columns: 1fr; 
-    gap: 1.5rem;
+    display: flex;
+    flex-direction: column; 
+    gap: 1.2rem;
 }
 
-/* --- Inputs e Iluminación (:focus) --- */
+.contact__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-white);
+}
+
+/* --- Ilumination (:focus) --- */
 .contact__input {
+    resize: vertical;
     width: 100%;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1135,15 +1100,13 @@ text-align: left;
     color: white;
     border-radius: 8px;
     transition: all 0.3s ease;
-    resize: vertical;
 }
 
-/* Explicación de :focus -> Es cuando haces clic en el cuadro */
 .contact__input:focus {
     outline: none;
-    border-color: #e11d48; /* Rojo brillante al escribir */
-    background: rgba(128, 0, 32, 0.1); /* Fondo rojizo sutil */
-    box-shadow: 0 0 15px rgba(225, 29, 72, 0.3); /* Resplandor exterior */
+    border-color: #e11d48; 
+    background: rgba(128, 0, 32, 0.1); 
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.3); 
 }
 
 /* --- Botón Centrado --- */
@@ -1164,16 +1127,8 @@ text-align: left;
     box-shadow: 0 0 20px rgba(225, 29, 72, 0.4);
 }
 
-.contact {
-    position: relative;
-    /* Crea un resplandor gigante detrás de todo */
-    background: radial-gradient(circle at center, rgba(128, 0, 32, 0.08) 0%, transparent 70%);
-}
-
-
-
 .find-me {
-    padding: 1rem 0;
+    padding: 3rem 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -1182,38 +1137,38 @@ text-align: left;
 }
 
 .find-me__title {
-    text-align: center;
-    margin-bottom: 2rem;
     margin-top: 1rem;
-        font-size: 2.85rem;
+    text-align: center;
+    font-size: 2rem; 
+    margin-bottom: 2rem;
 }
 
-
 .find-me__list {
-    display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Para que se acomoden en móviles */
-    gap: 2rem;
+    flex-wrap: wrap; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 0;
     list-style: none;
 }
 
 .find-me__link {
+    min-width: 220px;
     display: block;
-    padding: 1.5rem;
+    padding: 1.2rem;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     text-decoration: none;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    min-width: 220px;
 }
 
-/* --- El efecto de elevación y borde rojo --- */
 .find-me__link:hover {
-    transform: translateY(-10px); /* Sube en el eje Y */
-    background: rgba(128, 0, 32, 0.1); /* Fondo rojo vino sutil */
-    border-color: #e11d48; /* Borde rojo brillante */
-    box-shadow: 0 15px 30px rgba(225, 29, 72, 0.2); /* Sombra con resplandor */
+    transform: translateY(-10px); 
+    background: rgba(128, 0, 32, 0.1); 
+    border-color: #e11d48; 
+    box-shadow: 0 15px 30px rgba(225, 29, 72, 0.2); 
 }
 
 .find-me__content {
@@ -1223,14 +1178,14 @@ text-align: left;
 }
 
 .find-me__icon {
-    width: 35px; /* Ajusta el tamaño de tus logos */
+    width: 35px; 
     height: 35px;
     object-fit: contain;
 }
 
 .find-me__text {
     display: flex;
-    flex-direction: column; /* Pone el usuario debajo del nombre */
+    flex-direction: column; 
 }
 
 .find-me__name {
@@ -1246,15 +1201,14 @@ text-align: left;
 }
 
 .contact__footer {
-    text-align: center;         /* Centra el texto por dentro */
-    max-width: 500px;           /* Limita el ancho para que el centrado se note */
-    margin: 2rem auto 0 auto;   /* Centra el bloque entero horizontalmente */
+    text-align: center;         
+    max-width: 500px;           
+    margin: 2rem auto 0 auto;   
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.4);
     line-height: 1.5;
 }
 
-/* Para que los links dentro del footer también se vean elegantes */
 .contact__footer a {
     color: #e11d48; 
     text-decoration: none;
@@ -1263,13 +1217,11 @@ text-align: left;
 
 .contact__footer a:hover {
     text-decoration: underline;
-    color: #fb7185; /* Un rojo más iluminado al pasar el mouse */
+    color: #fb7185; 
 }
 
 
-
 /*PROJECTS*/
-/* --- 1. CONTENEDOR PRINCIPAL Y SISTEMA --- */
 .projects {
   padding: 20px 0;
 }
@@ -1312,14 +1264,19 @@ text-align: left;
 
 /* --- 2. HOJAS Y CARAS --- */
 .paper {
-    position: absolute;
-    width: 400px; /* Ancho fijo de hoja */
-    height: 100%;
     top: 0;
     right: 0;
     transform-style: preserve-3d;
     transform-origin: left;
     transition: transform 1s, z-index 0.5s;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none; /* Ocultas por defecto */
+}
+
+.paper.active-paper {
+    display: block; /* Solo la hoja actual se ve */
 }
 
 .front, .back {
@@ -1556,18 +1513,12 @@ text-align: left;
 
 
 
-
-
-
-
-
-
-/* --- 3. El salto a PC (Tu diseño original) --- */
-/* Cuando la pantalla es mayor a 1024px (Laptops/Desktop) */
+/*-------------MEDIA QUERIES------------*/
+/* When the screen is larger than 1024px (Laptops/Desktops) */
 @media (min-width: 1024px) {
     .welcome__container {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Vuelve a tus 2 columnas */
+        grid-template-columns: 1fr 1fr; 
         text-align: left;
         align-items: center;
         min-height: 70vh;
@@ -1579,22 +1530,21 @@ text-align: left;
     }
 
     .welcome__image-wrapper {
-        margin: 0; /* Lo pega a la derecha */
+        margin: 0; 
     }
 
     .welcome__stats {
-        grid-column: 1 / span 2; /* Cruza todo el ancho abajo */
-        flex-direction: row; /* Stats en horizontal */
+        grid-column: 1 / span 2; 
+        flex-direction: row; 
         justify-content: space-between;
         margin-top: 4rem;
     }
 }
 
-
-/* --- AJUSTE PARA PANTALLAS GRANDES (Desktop / Laptops) --- */
+/*--- ADJUSTMENT FOR LARGE SCREENS (Desktop / Laptops) ---*/
 @media (min-width: 992px) {
     .blog__post {
-        flex-direction: row-reverse; /* Tu diseño original en PC */
+        flex-direction: row-reverse; 
         align-items: center;
         gap: 3rem;
         padding: 25px;
@@ -1602,209 +1552,64 @@ text-align: left;
     }
 
     .post__image-container {
-        flex: 0 0 350px; /* Tamaño fijo de la imagen solo en PC */
+        flex: 0 0 350px; 
         height: 240px;
     }
 
     .post__img {
-        object-fit: contain; /* Volvemos a contain si prefieres ver la imagen completa sin recortes */
+        object-fit: contain; 
     }
 }
 
-
-
-
-/* --- AJUSTE PARA PANTALLAS GRANDES (Desktop / Laptops) --- */
+/* --- ADJUSTMENT FOR LARGE SCREENS (Desktop / Laptops) --- */
 @media (min-width: 1024px) {
     .about__container {
-        flex-direction: row-reverse; /* Recuperamos tu diseño original en PC */
+        flex-direction: row-reverse; 
         align-items: flex-start;
         gap: 4rem;
     }
 
     .about__image-container {
-        flex: 0 0 350px; /* Tamaño más imponente para PC */
+        flex: 0 0 350px; 
         height: 450px;
-        position: sticky; /* Opcional: la foto se queda fija mientras scrolleas el texto */
+        position: sticky; 
         top: 120px;
     }
 
     .about__image {
-        /* Puedes mantenerla redonda o darle un toque más ovalado si prefieres */
+        border-radius: var(--radius-full);
     }
 }
 
-
-
-/* Principios: Ya usaste auto-fit, así que es naturalmente responsive, 
-   solo ajustamos el espaciado en móvil */
+/* MOBILE*/
 @media (max-width: 768px) {
     .principles__list {
-        grid-template-columns: 1fr; /* Una columna para que sea fácil de leer en el bus/calle */
+        grid-template-columns: 1fr;
     }
 }
 
-/* --- 1. Estructura Base (Mobile First) --- */
-.skills {
-    padding: 40px 20px; /* Un poco más de aire en los bordes */
-}
-
-.skills__container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* --- 2. Lista de Habilidades (Flujo vertical en móvil) --- */
-.skills__list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem; /* El margen inferior de .skill ya da el espacio */
-    margin-bottom: 3rem;
-}
-
-.skill {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    gap: 0.5rem;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-/* --- 3. Sección Learning (Mejorada para móvil) --- */
-.learning {
-    background: 
-        radial-gradient(circle at top left, rgba(128, 0, 32, 0.25) 0%, transparent 55%),
-        radial-gradient(circle at bottom right, rgba(128, 0, 32, 0.15) 0%, transparent 55%),
-        #000000;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    padding: 2rem; /* Reducido de 3rem para que en móvil no coma mucho espacio */
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-    transition: all 0.5s ease;
-}
-
-.learning__list {
-    display: grid;
-    /* En móviles muy pequeños 1 columna, en tablets 2 */
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1rem;
-    padding-left: 1.2rem; /* Para que los bullets tengan espacio */
-}
-
-/* --- 4. Media Queries para Pantallas Grandes (Desktop) --- */
+/* --- Media Queries for Large Screens (Desktop) --- */
 @media (min-width: 992px) {
     .skills__list {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Dos columnas como te gusta */
+        grid-template-columns: 1fr 1fr; 
         column-gap: 4rem;
         row-gap: 1rem;
     }
 
     .learning {
-        padding: 3rem; /* Recuperamos el padding amplio en PC */
+        padding: 3rem; 
     }
 
     .learning__list {
-        grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+        grid-template-columns: repeat(3, 1fr); 
     }
-}
-
-/* --- Tus animaciones y colores se mantienen igual (DRY) --- */
-.skill__progress {
-    /* ... (tu código actual de animaciones) ... */
-}
-
-/* --- 1. SECCIÓN CONTACTO (Mobile First) --- */
-.contact {
-    padding: 40px 20px;
-    position: relative;
-    background: radial-gradient(circle at center, rgba(128, 0, 32, 0.08) 0%, transparent 70%);
-}
-
-.contact__container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.contact__description {
-    text-align: center;
-    color: var(--color-gray-light, #a1a1a1);
-    line-height: 1.6;
-    margin: 0 auto 2rem auto;
-    max-width: 600px; /* Limita el ancho para mejor lectura */
-}
-
-/* --- Formulario Responsivo --- */
-.contact__message {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(128, 0, 32, 0.2);
-    padding: 1.5rem; /* Menos padding en móvil */
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-}
-
-.contact__form {
-    display: flex;
-    flex-direction: column; /* Apilado simple para móvil */
-    gap: 1.2rem;
-}
-
-.contact__label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--color-white);
-}
-
-.contact__input {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1rem;
-    color: white;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-/* --- 2. SECCIÓN FIND ME (Redes Sociales) --- */
-.find-me {
-    padding: 3rem 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.find-me__title {
-    text-align: center;
-    font-size: 2rem; /* Tamaño más manejable en móvil */
-    margin-bottom: 2rem;
-}
-
-.find-me__list {
-    display: grid;
-    /* Grid inteligente: 1 columna en móvil, 2 en tablet, 4 en PC */
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-    padding: 0;
-    list-style: none;
-}
-
-.find-me__link {
-    display: block;
-    padding: 1.2rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* --- 3. MEDIA QUERIES (Desktop) --- */
 @media (min-width: 768px) {
     .contact__message {
-        padding: 2.5rem; /* Recuperamos el espacio amplio */
+        padding: 2.5rem; 
     }
 
     .find-me__title {
@@ -1818,14 +1623,10 @@ text-align: left;
     }
 }
 
-
-
-
-
-/* --- MEDIA QUERIES (Ajustes para Desktop) --- */
+/* ---  Desktop*/
 @media (min-width: 768px) {
     .header__container {
-        flex-direction: row; /* Horizontal en PC */
+        flex-direction: row; 
         justify-content: space-between;
         text-align: left;
     }
@@ -1850,66 +1651,25 @@ text-align: left;
 
 
 
-
-
-
-
-
-/* --- ESTILOS BASE (MOBILE FIRST) --- */
-/* --- ESTILOS BASE Y ESCRITORIO (TU DISEÑO ORIGINAL) --- */
-/* --- CONFIGURACIÓN RESPONSIVE (MOBILE FIRST) --- */
-
-.book__system {
-    display: flex;
-    flex-direction: column; /* Botones siempre debajo */
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    perspective: 2000px;
-}
-
-/* Contenedor en Móvil: Una sola tarjeta */
-.book-container {
-    width: 90vw;
-    max-width: 400px;
-    height: 550px;
-    position: relative;
-    perspective: none; /* Sin 3D en móvil */
-}
-
-/* En PC (Laptop/Desktop): Activamos el libro */
+/* On PC (Laptop/Desktop): Activate the book */
 @media (min-width: 1024px) {
     .book__system {
         perspective: 2000px;
-        flex-direction: row; /* Opcional: botones a los lados o déjalos en column si te gusta abajo */
+        flex-direction: row; 
     }
 
     .book-container {
-        width: 400px; /* Ancho de una página */
+        width: 400px; 
         transition: width 1s ease;
     }
 
     .book-container.open {
-        width: 800px; /* Se expande a dos páginas */
+        width: 800px; 
     }
 }
 
-/* --- TRATAMIENTO DE HOJAS --- */
 
-/* Móvil: Las hojas son slides planos */
-.paper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: none; /* Ocultas por defecto */
-}
-
-.paper.active-paper {
-    display: block; /* Solo la hoja actual se ve */
-}
-
-/* PC: Comportamiento de libro original */
+/* PC: Original book behavior */
 @media (min-width: 1024px) {
     .paper {
         display: block !important; 
@@ -1919,9 +1679,8 @@ text-align: left;
     }
 }
 
-/* --- MANEJO DE CARAS (FRONT/BACK) --- */
-
-/* Móvil: Queremos ver una cara a la vez */
+/* PC: Original book behavior */
+/* Mobile: We want to see one face at a time */
 @media (max-width: 1023px) {
     .front, .back {
         position: absolute !important;
@@ -1929,17 +1688,16 @@ text-align: left;
         height: 100%;
         top: 0;
         left: 0;
-        display: none; /* Ocultas */
-        transform: none !important; /* Sin rotaciones 3D */
+        display: none; 
+        transform: none !important; 
     }
 
-    /* La cara que toque mostrar según el paso actual */
     .face-active {
         display: flex !important;
     }
 }
 
-/* PC: Caras originales */
+/* PC: Original faces */
 @media (min-width: 1024px) {
     .front, .back {
         backface-visibility: hidden;

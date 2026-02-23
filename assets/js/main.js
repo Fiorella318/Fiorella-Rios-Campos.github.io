@@ -131,16 +131,10 @@ function jumpToPage(paperIndex, isBack = false) {
         // Step 4: Project 2 (Paper 2 Back) ...
         currentLocation = (paperIndex * 2) - (isBack ? 0 : 1);
     } else {
-        // En PC, para ver el Proyecto 2 (que es el Back del Paper 2), 
-        // necesitamos que el Paper 2 ya se haya volteado (flipped).
-        // Por lo tanto, necesitamos estar en la "ubicación" donde el Paper 2 ya pasó a la izquierda.
         
         if (isBack) {
-            // Si el proyecto está en la parte de atrás (02, 04), 
-            // saltamos una ubicación más adelante para que la hoja se de la vuelta.
             currentLocation = paperIndex + 1;
         } else {
-            // Si está en el frente (01, 03), nos quedamos en el índice de la hoja.
             currentLocation = paperIndex;
         }
     }

@@ -1109,9 +1109,8 @@ text-align: left;
     box-shadow: 0 0 15px rgba(225, 29, 72, 0.3); 
 }
 
-/* --- Botón Centrado --- */
 .contact__button {
-    justify-self: center; /* CLAVE: Centra el botón dentro del grid */
+    justify-self: center; 
     padding: 1rem 3rem;
     background: #800020;
     color: white;
@@ -1238,7 +1237,7 @@ text-align: left;
     flex-direction: column; 
     align-items: center;
     justify-content: center;
-    gap: 40px; /* Generous space between book and buttons */
+    gap: 40px; 
     perspective: 2000px;
     width: 100%;
     margin-top: 30px;
@@ -1250,7 +1249,7 @@ text-align: left;
     height: 550px;
     position: relative;
     transition: width 1s ease, transform 1s ease; 
-    margin: 0 auto; /* Basic centering*/
+    margin: 0 auto; 
 }
 
 .book-container.open {
@@ -1299,7 +1298,7 @@ text-align: left;
     justify-content: flex-start;
 }
 
-/* Depth effect on the spine */
+/* Depth effect on the spine (book style) */
 .front::before {
     content: '';
     position: absolute;
@@ -1413,7 +1412,7 @@ text-align: left;
     display: inline-block;
 }
 
-/* The container that reserves the space so that nothing moves */
+/* The container so nothing moves */
 .project-description {
     color: var(--color-gray-light);
     font-size: 0.95rem;
@@ -1428,7 +1427,7 @@ text-align: left;
     min-height: 1.2em; 
 }
 
-/* The blinking cursor (optional, gives a typewriter feel) */
+/* The blinking cursor (typewriter feel) */
 .typing-cursor::after {
     margin-left: 2px;
     content: "|";
@@ -1436,7 +1435,7 @@ text-align: left;
     color: #e11d48;
 }
 
-/* Solution to the weird space: remove any flex or gap from the parent */
+
 .project-info-container {
     width: 100%;
     display: block; /* Block is more secure for text than flex */
@@ -1455,7 +1454,6 @@ text-align: left;
 .p-media img { width: 100%; height: 100%; object-fit: cover; }
 
 .p-link {
-    /* Fixed positioning relative to the sheet */
     position: absolute;
     bottom: 30px;      
     left: 50%;         
@@ -1472,7 +1470,7 @@ text-align: left;
   }
 
 .p-link:hover {
-    /* The jump is now relative to its fixed position */
+    /* The jump is relative to its fixed position */
     transform: translateX(-50%) translateY(-10px); 
     background: rgba(128, 0, 32, 0.4);
     box-shadow: 0 10px 25px rgba(225, 29, 72, 0.5);
@@ -1515,7 +1513,7 @@ text-align: left;
     padding-bottom: 20px;
 }
 
-/* This class will be added by the JS only when it starts writing */
+/* added by the JS only when it starts writing */
 .project-description.is-writing {
     opacity: 1 !important;
 }

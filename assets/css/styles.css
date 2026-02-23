@@ -1526,6 +1526,7 @@ text-align: left;
 
 
 /*-------------MEDIA QUERIES------------*/
+/*------------- MEDIA QUERIES -------------*/
 
 /* --- MOBILE (Ajustes específicos para pantallas pequeñas) --- */
 @media (max-width: 768px) {
@@ -1611,24 +1612,60 @@ text-align: left;
     .contact { padding: 60px 0; }
 
     /* --- SISTEMA DEL LIBRO (PC) --- */
-    .book__system {
+   .book__system {
+        display: flex;
+        flex-direction: column;
+        align-items: center;    /* Centra los botones y el 'ancla' del libro */
         perspective: 2000px;
-        flex-direction: row; 
+        overflow: hidden; 
+        gap: 10px;          /* Espacio mínimo entre libro y botones */
+        min-height: 700px;  /* Ajusta esto si ves que los botones bailan mucho */
+        justify-content: center;
     }
+
+    /* EL ANCLA: Este div NO cambia de ancho. Para el navegador siempre mide 400px. */
     .book-container {
         width: 400px; 
-        transition: width 1s ease, transform 1s ease;
+        height: 550px;
+        position: relative;
+        /* Quitamos el cambio de width. Solo animamos el transform. */
+        transition: transform 1s ease-in-out; 
+        transform: translateX(0); 
     }
+
+    /* Cuando el libro se abre, lo movemos 200px a la derecha. 
+       Como la tapa se abre 400px a la izquierda, el resultado es 
+       un libro de 800px perfectamente centrado. */
     .book-container.open {
-        width: 800px; 
-        transform: translateX(200px); /* Centrado dinámico */
+        width: 400px !important; /* Forzamos a que no crezca el ancho */
+        transform: translateX(200px); 
     }
+
+    /* Los botones: Al estar fuera de .book-container, se quedan 
+       quietos en el centro porque el ancho del padre no ha cambiado. */
+
+    .control-buttons {
+        margin-top: 10px;  /* Valor negativo para "pegarlo" más al libro si es necesario */
+        gap: 3rem;          /* Espacio horizontal entre las dos flechas */
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        z-index: 100;
+    }
+
+    /* Páginas */
     .paper {
-        display: block !important; 
+        display: block !important;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
         right: 0;
         transform-origin: left;
         transition: transform 1s, z-index 0.5s;
     }
+
     .front, .back { backface-visibility: hidden; }
     .back { transform: rotateY(180deg); }
 }
@@ -1655,3 +1692,4 @@ text-align: left;
         overflow-y: auto;
     }
 }
+

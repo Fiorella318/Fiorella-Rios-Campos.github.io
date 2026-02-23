@@ -1526,16 +1526,15 @@ text-align: left;
 
 
 /*-------------MEDIA QUERIES------------*/
-/*------------- MEDIA QUERIES -------------*/
 
-/* --- MOBILE (Ajustes específicos para pantallas pequeñas) --- */
+/* --- MOBILE (Specific settings for small screens) --- */
 @media (max-width: 768px) {
     .principles__list {
         grid-template-columns: 1fr;
     }
 }
 
-/* --- TABLET / SMALL DESKTOP (A partir de 768px) --- */
+/* --- TABLET / SMALL DESKTOP (From 768px) --- */
 @media (min-width: 768px) {
     /* Header & Nav */
     .header__container {
@@ -1553,7 +1552,7 @@ text-align: left;
     .find-me__title { font-size: 2.85rem; }
 }
 
-/* --- LARGE SCREENS (Estandarizado a partir de 1024px) --- */
+/* --- LARGE SCREENS (Standardized from 1024px) --- */
 @media (min-width: 1024px) {
     /* Welcome */
     .welcome__container {
@@ -1587,7 +1586,7 @@ text-align: left;
     }
     .about__image { border-radius: var(--radius-full); }
 
-    /* Blog (Unificado de 992px a 1024px para consistencia) */
+    /* Blog (Unified from 992px to 1024px for consistency) */
     .blog__post {
         flex-direction: row-reverse; 
         align-items: center;
@@ -1611,42 +1610,35 @@ text-align: left;
     /* Contact */
     .contact { padding: 60px 0; }
 
-    /* --- SISTEMA DEL LIBRO (PC) --- */
+    /* --- BOOK SYSTEM (PC) --- */
    .book__system {
         display: flex;
         flex-direction: column;
-        align-items: center;    /* Centra los botones y el 'ancla' del libro */
+        align-items: center;    
         perspective: 2000px;
         overflow: hidden; 
-        gap: 10px;          /* Espacio mínimo entre libro y botones */
-        min-height: 700px;  /* Ajusta esto si ves que los botones bailan mucho */
+        gap: 10px;          /* Minimum space between book and buttons */
+        min-height: 700px;  
         justify-content: center;
     }
 
-    /* EL ANCLA: Este div NO cambia de ancho. Para el navegador siempre mide 400px. */
     .book-container {
         width: 400px; 
         height: 550px;
         position: relative;
-        /* Quitamos el cambio de width. Solo animamos el transform. */
         transition: transform 1s ease-in-out; 
         transform: translateX(0); 
     }
 
-    /* Cuando el libro se abre, lo movemos 200px a la derecha. 
-       Como la tapa se abre 400px a la izquierda, el resultado es 
-       un libro de 800px perfectamente centrado. */
+    /*perfectly centered*/
     .book-container.open {
-        width: 400px !important; /* Forzamos a que no crezca el ancho */
+        width: 400px !important; 
         transform: translateX(200px); 
     }
 
-    /* Los botones: Al estar fuera de .book-container, se quedan 
-       quietos en el centro porque el ancho del padre no ha cambiado. */
-
     .control-buttons {
-        margin-top: 10px;  /* Valor negativo para "pegarlo" más al libro si es necesario */
-        gap: 3rem;          /* Espacio horizontal entre las dos flechas */
+        margin-top: 10px; 
+        gap: 3rem;          /*horizontal*/
         display: flex;
         justify-content: center;
         width: 100%;
@@ -1654,7 +1646,7 @@ text-align: left;
         z-index: 100;
     }
 
-    /* Páginas */
+    /* Pages */
     .paper {
         display: block !important;
         position: absolute;
@@ -1670,7 +1662,7 @@ text-align: left;
     .back { transform: rotateY(180deg); }
 }
 
-/* --- MOBILE BOOK LOGIC (Ajustes para pantallas táctiles/pequeñas) --- */
+/* --- MOBILE BOOK LOGIC (Settings for touchscreens/small screens) --- */
 @media (max-width: 1023px) {
     .book-container {
         transform: translateX(0) !important;

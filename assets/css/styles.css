@@ -1526,9 +1526,35 @@ text-align: left;
 
 
 /*-------------MEDIA QUERIES------------*/
-/*WELCOME*/
-/* When the screen is larger than 1024px (Laptops/Desktops) */
+
+/* --- MOBILE (Ajustes específicos para pantallas pequeñas) --- */
+@media (max-width: 768px) {
+    .principles__list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- TABLET / SMALL DESKTOP (A partir de 768px) --- */
+@media (min-width: 768px) {
+    /* Header & Nav */
+    .header__container {
+        flex-direction: row; 
+        justify-content: space-between;
+        text-align: left;
+    }
+    .header__name { font-size: 2rem; }
+    .nav { width: auto; }
+    .nav__list { gap: 1rem; }
+    .nav__link { font-size: 0.9375rem; padding: 8px 12px; }
+
+    /* Contact */
+    .contact__message { padding: 2.5rem; }
+    .find-me__title { font-size: 2.85rem; }
+}
+
+/* --- LARGE SCREENS (Estandarizado a partir de 1024px) --- */
 @media (min-width: 1024px) {
+    /* Welcome */
     .welcome__container {
         display: grid;
         grid-template-columns: 1fr 1fr; 
@@ -1537,25 +1563,30 @@ text-align: left;
         min-height: 70vh;
         gap: 2rem;
     }
-
-    .welcome__text-content {
-        align-items: flex-start;
-    }
-
-    .welcome__image-wrapper {
-        margin: 0; 
-    }
-
+    .welcome__text-content { align-items: flex-start; }
+    .welcome__image-wrapper { margin: 0; }
     .welcome__stats {
         grid-column: 1 / span 2; 
         flex-direction: row; 
         justify-content: space-between;
         margin-top: 4rem;
     }
-}
 
-/*--- ADJUSTMENT FOR LARGE SCREENS (Desktop / Laptops) ---*/
-@media (min-width: 992px) {
+    /* About */
+    .about__container {
+        flex-direction: row-reverse; 
+        align-items: flex-start;
+        gap: 4rem;
+    }
+    .about__image-container {
+        flex: 0 0 350px; 
+        height: 450px;
+        position: sticky; 
+        top: 120px;
+    }
+    .about__image { border-radius: var(--radius-full); }
+
+    /* Blog (Unificado de 992px a 1024px para consistencia) */
     .blog__post {
         flex-direction: row-reverse; 
         align-items: center;
@@ -1563,137 +1594,51 @@ text-align: left;
         padding: 25px;
         border-bottom: none;
     }
+    .post__image-container { flex: 0 0 350px; height: 240px; }
+    .post__img { object-fit: contain; }
 
-    .post__image-container {
-        flex: 0 0 350px; 
-        height: 240px;
-    }
-
-    .post__img {
-        object-fit: contain; 
-    }
-}
-
-/* --- ADJUSTMENT FOR LARGE SCREENS (Desktop / Laptops) --- */
-@media (min-width: 1024px) {
-    .about__container {
-        flex-direction: row-reverse; 
-        align-items: flex-start;
-        gap: 4rem;
-    }
-
-    .about__image-container {
-        flex: 0 0 350px; 
-        height: 450px;
-        position: sticky; 
-        top: 120px;
-    }
-
-    .about__image {
-        border-radius: var(--radius-full);
-    }
-}
-
-/* MOBILE*/
-@media (max-width: 768px) {
-    .principles__list {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* --- Media Queries for Large Screens (Desktop) --- */
-@media (min-width: 992px) {
+    /* Skills & Learning */
     .skills__list {
         display: grid;
         grid-template-columns: 1fr 1fr; 
         column-gap: 4rem;
         row-gap: 1rem;
     }
+    .learning { padding: 3rem; }
+    .learning__list { grid-template-columns: repeat(3, 1fr); }
 
-    .learning {
-        padding: 3rem; 
-    }
+    /* Contact */
+    .contact { padding: 60px 0; }
 
-    .learning__list {
-        grid-template-columns: repeat(3, 1fr); 
-    }
-}
-
-/* --- 3. MEDIA QUERIES (Desktop) --- */
-@media (min-width: 768px) {
-    .contact__message {
-        padding: 2.5rem; 
-    }
-
-    .find-me__title {
-        font-size: 2.85rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .contact {
-        padding: 60px 0;
-    }
-}
-
-/* ---  Desktop*/
-@media (min-width: 768px) {
-    .header__container {
-        flex-direction: row; 
-        justify-content: space-between;
-        text-align: left;
-    }
-
-    .header__name {
-        font-size: 2rem;
-    }
-
-    .nav {
-        width: auto;
-    }
-
-    .nav__list {
-        gap: 1rem;
-    }
-
-    .nav__link {
-        font-size: 0.9375rem;
-        padding: 8px 12px;
-    }
-}
-
-
-/* On PC (Laptop/Desktop): Activate the book */
-@media (min-width: 1024px) {
+    /* --- SISTEMA DEL LIBRO (PC) --- */
     .book__system {
         perspective: 2000px;
         flex-direction: row; 
     }
-
     .book-container {
         width: 400px; 
-        transition: width 1s ease;
+        transition: width 1s ease, transform 1s ease;
     }
-
     .book-container.open {
         width: 800px; 
+        transform: translateX(200px); /* Centrado dinámico */
     }
-}
-
-
-/* PC: Original book behavior */
-@media (min-width: 1024px) {
     .paper {
         display: block !important; 
         right: 0;
         transform-origin: left;
         transition: transform 1s, z-index 0.5s;
     }
+    .front, .back { backface-visibility: hidden; }
+    .back { transform: rotateY(180deg); }
 }
 
-/* PC: Original book behavior */
-/* Mobile: We want to see one face at a time */
+/* --- MOBILE BOOK LOGIC (Ajustes para pantallas táctiles/pequeñas) --- */
 @media (max-width: 1023px) {
+    .book-container {
+        transform: translateX(0) !important;
+        width: 90vw;
+    }
     .front, .back {
         position: absolute !important;
         width: 100%;
@@ -1703,47 +1648,10 @@ text-align: left;
         display: none; 
         transform: none !important; 
     }
-
-    .face-active {
-        display: flex !important;
-    }
-}
-
-/* PC: Original faces */
-@media (min-width: 1024px) {
-    .front, .back {
-        backface-visibility: hidden;
-    }
-    .back { transform: rotateY(180deg); }
-}
-
-
-/* Ajuste para que el texto no se oculte en móvil */
-@media (max-width: 1023px) {
     .face-active {
         display: flex !important;
         flex-direction: column;
         justify-content: flex-start;
-        overflow-y: auto; /* Por si el texto es muy largo en pantallas pequeñas */
-    }
-}
-
-
-/* --- CENTRADO DINÁMICO DEL LIBRO --- */
-
-@media (min-width: 1024px) {
-    .book-container.open {
-        width: 800px;
-        /* Movemos el libro un poco a la derecha para compensar las hojas abiertas a la izquierda */
-        /* 200px es generalmente la mitad del ancho de una página (400px) */
-        transform: translateX(200px); 
-    }
-}
-
-/* En móvil, nos aseguramos de que no haya desplazamientos extraños */
-@media (max-width: 1023px) {
-    .book-container {
-        transform: translateX(0) !important;
-        width: 90vw;
+        overflow-y: auto;
     }
 }

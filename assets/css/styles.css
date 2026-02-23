@@ -44,8 +44,6 @@ body {
   
 }
 
-/*AHORA*/
-
 h1,
 h2,
 h3,
@@ -54,7 +52,7 @@ h4 {
   font-weight: 700;
   line-height: 1.2;
   color: var(--color-white);
-  /*Letter-spacing para títulos */
+  /*Letter-spacing for titles*/
   letter-spacing: -0.02em;
 }
 
@@ -95,53 +93,54 @@ strong {
   font-weight: 600px;
 }
 
+/*ANIMATION ABOUT-ME*/
 b {
     color: var(--blue-light);
     display: inline-block;
     position: relative;
     opacity: 0;
-    /* Usamos 'ease-out' para que la caída sea rápida al principio */
+    /* We use 'ease-out' to make the fall quick at the beginning */
     animation: ballBounce 1.2s ease-out forwards;
 }
 
-/* La primera b cae al instante (0s) */
+/* The first b falls instantly (0s) */
 p:nth-of-type(1) b {
     animation-delay: 0s;
 }
 
-/* La segunda b espera a que la primera casi termine su primer impacto */
+/* The second b waits until the first one has almost finished its first impact */
 p:nth-of-type(2) b {
     animation-delay: 0.4s;
 }
 
-/* La tercera b espera un poco más */
+/* The third b will have to wait a little longer */
 p:nth-of-type(3) b {
     animation-delay: 0.8s;
 }
 
 @keyframes ballBounce {
     0% {
-        transform: translateY(-200px); /* Desde el header */
+        transform: translateY(-200px); /* From the header */
         opacity: 0;
     }
     30% {
-        transform: translateY(0);      /* Primer impacto en el suelo */
+        transform: translateY(0);      /* First impact on the ground */
         opacity: 0.3;
     }
     50% {
-        transform: translateY(-25px);  /* Primer rebote hacia arriba */
+        transform: translateY(-25px);  /* First bounce upwards */
         opacity: 0.5;
     }
     70% {
-        transform: translateY(0);      /* Segundo impacto */
+        transform: translateY(0);      /* Second Impact */
         opacity: 0.7;
     }
     85% {
-        transform: translateY(-10px);  /* Segundo rebote (más pequeño) */
+        transform: translateY(-10px);  /* Second bounce (smaller) */
         opacity: 0.85;
     }
     100% {
-        transform: translateY(0);      /* Se queda quieta */
+        transform: translateY(0);      /* It stays still */
         opacity: 1;
     }
 }
@@ -152,7 +151,7 @@ em {
   font-style: italic;
 }
 
-/* NUEVO: Párrafos introductorios más grandes */
+/*Larger introductory paragraphs*/
 .welcome__description,
 .about__text,
 .skills__container,
@@ -165,21 +164,10 @@ em {
 a {
   color: var(--color-white);
   text-decoration: none;
-  /*Transición suave (sin animación completa aún) */
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
 
-/*a:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-}
-
-a:active {
-  color: #1e40af;
-}
-*/
 
 ul {
   list-style: none;
@@ -192,21 +180,23 @@ ul {
   background-color: var(--bg-color);
   top: 0;
   z-index: 1000;
-  padding: 24px 0 0;
   border-bottom: 1px solid rgba(255, 59, 63, 0.3);
   box-shadow: var(--shadow-glow);
   width: 100%;
+  padding: 1.5rem 0 0.5rem; 
 }
 
 .header__container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 2rem;
   margin: 0 auto;
-  padding: 0 20px;
   margin-bottom: 0.75rem;
+  flex-direction: column; /*Stacked on mobile*/
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 0 20px;
 }
 
 .header__brand {
@@ -216,27 +206,33 @@ ul {
 
 .header__name {
   color: var(--color-white);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   letter-spacing: -0.03em;
-  font-size: 2rem;
+  font-size: 1.5rem; /* Reduced for mobile */
 }
 
+
 .header__tagline {
-  font-size: 0.875rem; /* 14px */
-  /* NUEVO: Espaciado de letras para subtítulos */
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-weight: 500;
+    font-size: 0.75rem; 
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-gray-light);
 }
 
 .nav {
   text-align: left;
+  width: 100%; /* Use the full width to center the list */
 }
 
 .nav__list {
-  display: flex;
-    gap: 1rem;
     align-items: center;
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 0.5rem; 
+    padding: 0;
+    list-style: none;
 }
 
 .nav__item {
@@ -245,16 +241,17 @@ ul {
 }
 
 .nav__link {
-  padding: 8px 12px;
   display: inline-block;
   font-weight: 500;
-  /* NUEVO: Mejor espaciado */
-  font-size: 0.9375rem; /* 15px */
   letter-spacing: 0.01em;
-  transition: all 0.3s ease; /* Suaviza la aparición del brillo */
-  border-radius: var(--radius-full); /* Preparamos la forma redonda */
-  
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 50px;
 }
+
 
 .nav__link:hover {
   color: var(--secondary-red);
@@ -262,20 +259,18 @@ ul {
   transform: translateY(-5px);
 }
 
-
-
 .nav__link--active {
   font-weight: 600;
   
-  /* Fondo de la cápsula (Rojo vivo sutil) */
+  /* Capsule background (Subtle bright red) */
   background-color: rgba(var(--primary-red), 0.25); 
 
-  /* Sombra circular (Glow intenso) */
+  /* Circular shadow (Intense Glow) */
   box-shadow: 
-    0 0 15px 2px rgba(var(--primary-red), 0.6), /* Brillo núcleo */
-    0 0 30px 5px rgba(var(--primary-red), 0.2); /* Resplandor expandido */
+    0 0 15px 2px rgba(var(--primary-red), 0.6), /* Core brightness */
+    0 0 30px 5px rgba(var(--primary-red), 0.2); /* Expanded glow */
 
-  /* Brillo en las letras para que parezcan encendidas */
+  /* Add brightness to the letters to make them appear lit */
   text-shadow: 0 0 8px rgba(var(--primary-red), 0.8);
 }
 
@@ -298,19 +293,19 @@ ul {
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 20px 100px;
-
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  
 }
+
 
 /*FOOTER */
 .footer {
-  background: var(--color-gray-dark);
   color: var(--color-gray-light);
-  padding: 19px 0 0;
   text-align: center;
+  background: var(--color-gray-dark, #111);
+  padding: 3rem 0 1.5rem; 
+  margin-top: 4rem;
 }
 
 .footer__container {
@@ -319,24 +314,27 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
-
 
 .footer__list {
   display: flex;
-  gap: 1.5rem;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0;
+  gap: 1.2rem;
+  list-style: none;
+  padding: 0;
 }
 
 .footer__link {
   color: var(--color-white);
   margin: 0;
   display: inline-block;
-  font-size: 0.9375rem;
   font-weight: 400;
+  color: var(--color-white);
+  font-size: 0.9rem;
+  transition: color 0.3s;
 }
 
 .footer__link:hover {
@@ -356,29 +354,22 @@ ul {
 }
 
 
-
-/*SECCIÓN WELCOME */
+/*WELCOME */
 
 .welcome {
 text-align: left;
   position: relative;
-  /* overflow: visible;  <-- Cambia hidden por visible si quieres que el resplandor de las luces se vea completo */
-  min-height: 100vh;    /* Ocupa toda la altura de la pantalla para un efecto "Hero" impactante */
+  min-height: 100vh;    
   display: flex;
-  flex-direction: column; /* Permite que el contenedor y las stats se apilen verticalmente */
+  flex-direction: column; 
   justify-content: center;
   margin-bottom: 0;
-  padding: 60px 0;      /* Espacio para que no respire tan pegado al header */}
-
-  /* La esfera de luz en la esquina superior izquierda */
-
-  
-
+  padding: 60px 0;
+}
 
 .welcome::before {
   content: "";
   position: absolute;
-  /* Posición Final: Esquina superior izquierda */
   top: 10px; 
   left: -150px;
   
@@ -394,34 +385,35 @@ text-align: left;
   z-index: 0;
   pointer-events: none;
 
-  /* Animación: nombre | duración | curva | modo-final */
+  /* Animation: name | duration | curve | final-mode */
   animation: slideInLight 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Definición del movimiento */
+/* Definition of movement */
 @keyframes slideInLight {
   0% {
-    /* Empieza fuera de la pantalla a la izquierda y con menos brillo */
     transform: translateX(-100%) scale(0.8);
     opacity: 0;
   }
   100% {
-    /* Llega a su posición original (0) y se queda ahí */
     transform: translateX(0) scale(1);
     opacity: 1;
   }
 }
 
-
-/* --- CONTENEDOR DEL GRÁFICO --- */
+/* --- GRAPHIC CONTAINER --- */
 .welcome__image-wrapper {
-    position: relative;
-    max-width: 34rem;
-    width: 100%;
     height: auto;
     overflow: visible;
     border: none;
-    
+    position: relative;
+    width: 100%;
+    max-width: 500px; 
+    margin: 0 auto;
+    aspect-ratio: 5 / 4; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .blueprint-grid {
@@ -430,7 +422,7 @@ text-align: left;
     height: 100%;
     background-image: 
     linear-gradient(rgba(var(--gray-color), 0.03) 1px, transparent 1px);
-    background-size: 100% 40px; /* 100% de ancho, 40px de separación entre líneas */
+    background-size: 100% 40px; 
 }
 
 .line-path {
@@ -442,7 +434,7 @@ text-align: left;
     animation: drawPath 3s ease-out forwards;
 }
 
-/* Colores Neón */
+/* NEON COLORS */
 .dedication-path { stroke: #39ff14; filter: drop-shadow(0 0 8px #39ff14); }
 .practicing-path { stroke: #ffcc00; filter: drop-shadow(0 0 8px #ffcc00); animation-delay: 0.1s; }
 .learning-path { stroke: #00d2ff; filter: drop-shadow(0 0 8px #00d2ff); animation-delay: 0.2s; }
@@ -451,7 +443,7 @@ text-align: left;
     fill: #ffffff;
     opacity: 0;
     filter: drop-shadow(0 0 15px #ffffff);
-    animation: fadeInPoint 0.4s forwards 1.7s; /* Aparece justo en el choque */
+    animation: fadeInPoint 0.4s forwards 1.7s; /* It appears right at the crash */
 }
 
 .success-path {
@@ -464,7 +456,6 @@ text-align: left;
     animation: drawPath 1.2s ease-out forwards 2.1s;
 }
 
-/* Etiquetas con Iluminación */
 .line-label {
     font-size: 13px;
     font-weight: 700;
@@ -480,11 +471,11 @@ text-align: left;
 .glow-white { fill: #ffffff; text-shadow: 0 0 12px #ffffff; }
 
 .success-text {
-    animation: fadeInText 0.8s forwards; /* Usamos este nombre en el script */
-    animation-delay: 3s; /* El tiempo que definimos antes */
+    animation: fadeInText 0.8s forwards; /* We use this name in the script */
+    animation-delay: 3s; /* The time we defined earlier */
 }
 
-/* Animaciones */
+/* Animations*/
 @keyframes drawPath { to { stroke-dashoffset: 0; } }
 @keyframes fadeInText { to { opacity: 1; } }
 @keyframes fadeInPoint { 
@@ -492,31 +483,27 @@ text-align: left;
     to { opacity: 1; transform: scale(1); transform-origin: center; } 
 }
 
-
-
-
 .welcome__container{
-  display: grid;
-  /* Creamos 2 columnas para arriba y que los stats ocupen todo abajo */
-  grid-template-columns: 1fr 1fr; 
-  align-items: center;
-  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 20px;
+  align-items: center;
+  text-align: center;
 }
 
 .welcome__text-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Todo alineado a la izquierda */
-  text-align: left;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .welcome__title {
-  margin-bottom: 0.5rem; /* Pegadito al subtítulo */
+  margin-bottom: 0.5rem; 
 }
-
 
 .welcome__subtitle {
   margin-bottom: 1.5rem;
@@ -538,50 +525,50 @@ text-align: left;
 }
 
 .welcome__actions .button {
-  position: relative; /* Necesario para posicionar la línea respecto al texto */
+  position: relative; 
   color: var(--color-white);
-  text-decoration: none; /* Quitamos el subrayado nativo */
+  text-decoration: none; 
   font-weight: 600;
   padding: 4px 0;
   transition: color 0.3s ease;
   display: inline-block;
 }
 
-/* Creamos la línea "invisible" abajo */
+/* We create the "invisible" line below */
 .welcome__actions .button::after {
   content: '';
   position: absolute;
   width: 100%;
-  height: 2px; /* Grosor de la línea */
+  height: 2px; /* Line thickness */
   bottom: 0;
   left: 0;
-  background-color: var(--secondary-red); /* Tu rojo intenso */
+  background-color: var(--secondary-red); 
   
   
-  /* Aquí ocurre la magia: */
-  transform: scaleX(0); /* La línea empieza con tamaño 0 */
-  transform-origin: bottom left; /* Se dibuja desde la izquierda */
-  transition: transform 0.3s ease-out; /* Velocidad de la animación */
+  /*Magic */
+  transform: scaleX(0); /* The line starts with size 0 */
+  transform-origin: bottom left; /* Drawn from the left */
+  transition: transform 0.3s ease-out; /* Animation speed */
 }
 
-/* Animación al hacer Hover */
 .welcome__actions .button:hover {
-  color: var(--secondary-red); /* El texto también puede cambiar a rojo */
-  
+  color: var(--secondary-red);  
 }
 
 .welcome__actions .button:hover::after {
-  transform: scaleX(1); /* La línea crece al 100% */
+  transform: scaleX(1); /* The line grows to 100% */
 }
 
 .welcome__stats {
-  grid-column: 1 / span 2; /* Cruza de lado a lado */
+  grid-column: 1 / span 2; /* Cross from side to side */
   display: flex;
-  justify-content: space-between; /* Los separa equitativamente */
-  width: 100%;
+  justify-content: space-between; /* Separates them equally */
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(var(--gray-color), 0.1); /* Línea divisoria sutil */
+  border-top: 1px solid rgba(var(--gray-color), 0.1); /* Subtle dividing line */
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
 
 .stat {
@@ -593,28 +580,27 @@ text-align: left;
   font-size: 1.8rem;
   font-weight: 650;
   color: var(--color-white);
-  /* Brillo intenso como foco LED */
   text-shadow: 0 0 15px rgba(var(--primary-red), 0.9); 
   margin-bottom: 0.5rem;
   animation: pulse 1s ease-in-out infinite;
-  will-change: transform, text-shadow; /* Optimización para el navegador */
+  will-change: transform, text-shadow; /* Browser optimization */
 }
+
 @keyframes pulse {
   0% {
     transform: scale(1);
     text-shadow: 0 0 15px rgba(var(--primary-red), 0.9);
   }
   50% {
-    transform: scale(1.5); /* Crece un 10% */
+    transform: scale(1.5); 
     text-shadow: 0 0 25px rgba(var(--primary-red), 1), 
-                 0 0 10px rgba(var(--primary-red), 0.6); /* Brillo más intenso */
+                 0 0 10px rgba(var(--primary-red), 0.6); 
   }
   100% {
     transform: scale(1);
     text-shadow: 0 0 15px rgba(var(--primary-red), 0.9);
   }
 }
-
 
 .stat__label {
   font-size: 0.875rem; /* 14px */
@@ -624,90 +610,108 @@ text-align: left;
   font-weight: 500;
 }
 
-
-/*BLOG SECTION*/
-
-.blog__post {
-    display: flex; /* Alinea imagen y contenido en fila */
-    gap: 2rem;    /* Espacio entre la foto y el texto */
-    align-items: flex-start;
-    margin-bottom: 4rem;
-    padding: 20px;
-    border-radius: var(--radius-lg);
-    transition: background 0.3s ease;
-    flex-direction: row-reverse;
+.skills-chart {
+    width: 100%;
+    height: auto; /* Allows the SVG to scale with the container */
+    display: block;
 }
 
-/* Controlamos el tamaño de la columna de la imagen */
+
+/*BLOG SECTION*/
+.blog__post {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column; 
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding: 15px;
+    border-radius: var(--radius-lg);
+    transition: background 0.3s ease;
+    border-bottom: 1px solid rgba(255, 59, 63, 0.1); 
+}
+
 .post__image-container {
-    flex: 0 0 300px; /* La imagen no se encoge y mide 300px de ancho */
-    height: 200px;
+    flex: 0 0 300px; 
+    width: 100%; 
+    height: 220px; 
     overflow: hidden;
     border-radius: var(--radius-md);
-    border: 1px solid rgba(var(--primary-red), 0.2 ) ;
-    background-color: inherit;
+    border: 1px solid rgba(var(--primary-red), 0.2);
+    background-color: rgba(var(--primary-red), 0.05); 
 }
 
 .post__img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover; 
     transition: transform 0.5s ease;
 }
 
-/* Controlamos la columna del texto */
 .post__content {
-    flex: 1; /* El texto ocupa todo el espacio restante */
+    justify-content: center;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .post__title {
-    margin-top: 0; /* Quitamos el margen superior para que alinee con la imagen */
+    margin-top: 0; 
     margin-bottom: 0.5rem;
 }
 
-/* Hover effect general del post */
+/* Hover effects */
 .blog__post:hover {
-    background: rgba(var(--gray-color), 0.03);
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .blog__post:hover .post__img {
     transform: scale(1.05);
 }
 
-.post__link:hover {
-  color: var(--secondary-red);
+.post__link {
+    transition: color 0.3s ease;
+    font-weight: 500;
 }
 
+.post__link:hover {
+    color: var(--color-accent);
+}
+
+.post__date {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-gray-light);
+    opacity: 0.8;
+}
 
 
 /*ABOUT ME */
-.about {
-text-align: left;
-  position: relative;
-  /* overflow: visible;  <-- Cambia hidden por visible si quieres que el resplandor de las luces se vea completo */
-  min-height: 100vh;    /* Ocupa toda la altura de la pantalla para un efecto "Hero" impactante */
-  display: flex;
-  flex-direction: column; /* Permite que el contenedor y las stats se apilen verticalmente */
-  justify-content: center;
+.about {   
   margin-bottom: 0;
-  padding: 60px 0;      /* Espacio para que no respire tan pegado al header */}
+    text-align: left;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 0;
+}
 
 .about__container {
     display: flex;
-    align-items: flex-start;
-    flex-direction: row-reverse;
-    gap: 2rem;
-    
+    flex-direction: column; 
+    align-items: center; 
+    gap: 3rem;
+    padding: 0 20px;
 }
-
 
 .about__image-container {
   flex: 0.25 0 300px; 
-  position: relative;
-  height: 450px;
+    width: 100%;
+    max-width: 300px; 
+    height: 300px; 
+    position: relative;
 }
 
 .about__image {
@@ -715,17 +719,18 @@ text-align: left;
   height: 100%;
   object-fit:cover;
   border-radius: var(--radius-full);
-  /* BORDE: Un borde sutil que ayuda a definir la forma antes del brillo */
+  /* BORDER: A subtle border that helps define the shape before the highlight */
   border: 2px solid rgba(var(--secondary-red), 0.5);
   
-  /* SOMBRA: Usamos tu variable de glow para que ilumine hacia afuera */
+  /* SHADOW: We use your glow variable to make it shine outwards */
   box-shadow: var(--shadow-glow);
   
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .about__content {
-  flex: 1;
+    flex: 1;
+    width: 100%;
 }
 
 .about__image:hover {
@@ -733,17 +738,16 @@ text-align: left;
   box-shadow: 0 0 40px 10px rgba(var(--primary-red), 0.6);
 }
 
-.about__quote{
-  background-color: var(--color-gray-dark);
-  padding: 2rem;
-  margin: 2.5rem 0;
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-  border-left: 4px solid var(--secondary-red);
+.about__quote {
+    background-color: var(--color-gray-dark);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    border-left: 4px solid var(--secondary-red);
 }
 
 .about__quote-text {
   font-style: italic;
-  /* El 0.8 va AFUERA del var, después de la coma */
   color: rgba(var(--blue-light), 0.85); 
   
 }
@@ -754,17 +758,14 @@ text-align: left;
   text-align: right;
   font-weight: 500;
   letter-spacing: 0.05em;
-  margin-top: 1rem; /* Separa el nombre de la frase */
-  color: var(--color-white); /* Para que resalte un poco más que la cita */
+  margin-top: 1rem; 
+  color: var(--color-white); 
 }
-
-
 
 .about__principles {
   width: 100%;
   padding-top: 2rem;
-  border-top: 1px solid rgba(var(--gray-color), 0.1); /* Línea divisoria sutil */
-  
+  border-top: 1px solid rgba(var(--gray-color), 0.1); 
   margin-top: 3rem;
 }
 
@@ -774,7 +775,6 @@ text-align: left;
 }
 
 .principles__list {
-  /* NUEVO: Grid para valores */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
@@ -783,9 +783,7 @@ text-align: left;
 
 .principles__item {
   padding: 1.5rem;
-  /* Cambiamos el blanco por un negro con transparencia */
   background-color: rgba(var(--gray-color), 0.03); 
-  /* Borde sutil rojo en lugar de gris */
   border: 1px solid rgba(var(--primary-red), 0.2); 
   border-radius: var(--radius-md);
   display: flex;
@@ -793,11 +791,9 @@ text-align: left;
   gap: 0.75rem;
   text-align: center;
   transition: transform 0.3s ease, border-color 0.3s ease;
-  
 }
 
 .principles__item:hover {
-  /* Efecto de elevación sutil */
   transform: translateY(-5px);
   border-color: rgba(var(--primary-red), 0.6);
   color: var(--color-white);
@@ -810,7 +806,6 @@ text-align: left;
   font-size: 1.0625rem;
 }
 .principles__item span {
-  /* Gris claro para que sea legible sobre fondo oscuro */
   color: var(--color-gray-light); 
   font-size: 0.9375rem;
 }
@@ -820,7 +815,7 @@ text-align: left;
   margin-right: 0.75rem;
   display: inline-block;
   animation: tilt 2s ease-in-out infinite;
-  transform-origin: bottom center; /* Se mueve desde la base */
+  transform-origin: bottom center; 
 }
 
 @keyframes tilt {
@@ -831,9 +826,8 @@ text-align: left;
 
 
 /*SKILLS*/
-
 .skills {
-  padding: 20px 0;
+    padding: 40px 20px; 
 }
 
 .skills__container {
@@ -854,9 +848,12 @@ text-align: left;
   font-weight: 400;
 }
 
-/* --- Lista de Habilidades --- */
+/* --- skills list --- */
 .skills__list {
-  margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; 
+    margin-bottom: 3rem;
 }
 
 .skill {
@@ -865,9 +862,8 @@ text-align: left;
   grid-template-rows: auto auto;
   gap: 0.5rem;
   align-items: center;
-  margin-bottom: 2rem; /* Espacio entre cada bloque de habilidad */
+  margin-bottom: 1.5rem;
 }
-
 
 .skill__name {
   grid-column: 1;
@@ -886,16 +882,16 @@ text-align: left;
 }
 
 .skill__bar {
-  grid-column: 1 / -1; /* Ocupa las dos columnas */
+  grid-column: 1 / -1; /* Occupies both columns */
   grid-row: 2;
-  height: 12px; /* Las barras modernas se ven mejor un poco más finas */
+  height: 12px; 
   background-color: rgba(var(--gray-color), 0.1);
   border-radius: 10px;
   position: relative;
   overflow: hidden;
 }
 
-/* --- Modificadores de Color y Ancho --- */
+/* --- Color and Width Modifiers --- */
 .skill__progress--html {
   --index: 0;
   width: 100%;
@@ -945,14 +941,14 @@ text-align: left;
   background: linear-gradient(90deg, #61dafb 0%, #a5f3fc 100%);
 }
 
-/* --- Animaciones --- */
+/* --- Animations --- */
 
-/* 1. Llenado de la barra */
+/* 1. Filling the bar */
 @keyframes fillProgress {
   from { width: 0; }
 }
 
-/* 2. Efecto de Brillo (Shimmer) */
+/* 2. Shimmer Effect */
 .skill__progress {
   position: absolute;
   top: 0;
@@ -960,14 +956,11 @@ text-align: left;
   height: 100%;
   border-radius: 12px;
   animation: fillProgress 1.5s ease-out forwards;
-  animation-delay: calc(var(--index, 0) * 0.2s);
-  
-  /* CLAVE: Ponemos overflow hidden aquí para que el destello 
-     no se vea en la parte gris de la derecha */
+  animation-delay: calc(var(--index, 0) * 0.2s); 
   overflow: hidden; 
 }
 
-/* --- El Destello (Shimmer) --- */
+/* --- (Shimmer) --- */
 .skill__progress::after {
   content: "";
   position: absolute;
@@ -978,10 +971,10 @@ text-align: left;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.4), /* Un poco más de brillo */
+    rgba(255, 255, 255, 0.4),
     transparent
   );
-  /* El destello ahora solo viajará por el ancho de .skill__progress */
+  /* The flash will now only travel the width of .skill__progress */
   animation: shimmer 2.5s infinite;
   animation-delay: 1.5s; 
 }
@@ -994,40 +987,33 @@ text-align: left;
 @media (min-width: 992px) {
   .skills__list {
     display: grid;
-    /* Crea dos columnas iguales */
     grid-template-columns: 1fr 1fr; 
-    /* Espacio entre las columnas */
     column-gap: 4rem; 
     row-gap: 1rem;
   }
 }
 
 .learning {
-  /* Fondo base con los dos resplandores en las esquinas */
+  /* Base background with the two glows in the corners */
   background: 
-    radial-gradient(circle at top left, rgba(128, 0, 32, 0.25) 0%, transparent 55%),
-    radial-gradient(circle at bottom right, rgba(128, 0, 32, 0.15) 0%, transparent 55%),
-    #000000;
+        radial-gradient(circle at top left, rgba(128, 0, 32, 0.25) 0%, transparent 55%),
+        radial-gradient(circle at bottom right, rgba(128, 0, 32, 0.15) 0%, transparent 55%),
+        #000000;
 
   border: 1px solid rgba(255, 255, 255, 0.03);
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-  transition: all 0.5s ease; /* Suaviza el cambio de brillo */
-
-  /* Combinamos todas las sombras en una sola declaración */
-  box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.6),           /* Sombra de profundidad */
-    -10px -10px 30px rgba(128, 0, 32, 0.05), /* Aura superior */
-    10px 10px 30px rgba(128, 0, 32, 0.05);   /* Aura inferior */
+  
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    transition: all 0.5s ease;
 }
 
 
 .learning:hover {
-  /* Al pasar el mouse, el rojo vino se vuelve un poquito más intenso */
   background: linear-gradient(135deg, rgba(128, 0, 32, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  transform: translateY(-5px); /* Un pequeño salto hacia arriba para dar feedback */
+  transform: translateY(-5px); 
 }
 
 .learning__container {
@@ -1037,15 +1023,14 @@ text-align: left;
 .learning__title {
     margin-bottom: 2rem;
     margin-top: 0.25rem;
-    
 }
-
 
 .learning__list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     list-style-type: disc; 
     gap: 1rem;
+    padding-left: 1.2rem; 
 }
 
 .learning__item {
@@ -1054,86 +1039,60 @@ text-align: left;
     line-height: 1.6;
 }
 
+
 /*CONTACT*/
 .contact {
-  padding: 20px 0;
+    padding: 40px 20px;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(128, 0, 32, 0.08) 0%, transparent 70%);
 }
 
 .contact__container {
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
 .contact__title {
   text-align: center;
 }
 
 .contact__description {
-     /* Evita que el texto se estire demasiado y sea difícil de leer */
-    margin: 0 auto 3rem auto; /* Centra horizontalmente y da espacio abajo */
     text-align: center;
     color: var(--color-gray-light, #a1a1a1);
     line-height: 1.6;
+    margin: 0 auto 2rem auto;
+    max-width: 600px; 
 }
 
-/*CONTACT*/
-.contact {
-  padding: 20px 0;
-}
-
-.contact__container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.contact__title {
-  text-align: center;
-}
-
-.contact__description {
-  text-align: center;
-  color: var(--color-gray-light, #666666);
-  margin-bottom: 3rem;
-}
-
-/*CONTACT*/
-.contact {
-  padding: 20px 0;
-}
-
-.contact__container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.contact__title {
-  text-align: center;
-}
-
-.contact__description {
-  text-align: center;
-  color: var(--color-gray-light, #666666);
-  margin-bottom: 3rem;
-}
-
-/* --- Contenedor del Formulario --- */
+/* --- Form Container --- */
 .contact__message {
+    width: 100%;
     max-width: 600px;
-    margin: 3rem auto; /* Centra el bloque horizontalmente */
-    background: rgba(255, 255, 255, 0.03); /* Un poco más claro */
-    border: 1px solid rgba(128, 0, 32, 0.2); /* Borde vino más visible */
-    padding: 2.5rem;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(128, 0, 32, 0.2);
+    padding: 1.5rem; 
     border-radius: 20px;
-    backdrop-filter: blur(10px); /* Efecto cristal */
+    backdrop-filter: blur(10px);/* Cristal effect */
 }
 
-/* --- Grid del Formulario --- */
+/* --- Form --- */
 .contact__form {
-    display: grid;
-    /* Creamos una columna que ocupa todo el ancho */
-    grid-template-columns: 1fr; 
-    gap: 1.5rem;
+    display: flex;
+    flex-direction: column; 
+    gap: 1.2rem;
 }
 
-/* --- Inputs e Iluminación (:focus) --- */
+.contact__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-white);
+}
+
+/* --- Ilumination (:focus) --- */
 .contact__input {
+    resize: vertical;
     width: 100%;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1141,15 +1100,13 @@ text-align: left;
     color: white;
     border-radius: 8px;
     transition: all 0.3s ease;
-    resize: vertical;
 }
 
-/* Explicación de :focus -> Es cuando haces clic en el cuadro */
 .contact__input:focus {
     outline: none;
-    border-color: #e11d48; /* Rojo brillante al escribir */
-    background: rgba(128, 0, 32, 0.1); /* Fondo rojizo sutil */
-    box-shadow: 0 0 15px rgba(225, 29, 72, 0.3); /* Resplandor exterior */
+    border-color: #e11d48; 
+    background: rgba(128, 0, 32, 0.1); 
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.3); 
 }
 
 /* --- Botón Centrado --- */
@@ -1170,16 +1127,8 @@ text-align: left;
     box-shadow: 0 0 20px rgba(225, 29, 72, 0.4);
 }
 
-.contact {
-    position: relative;
-    /* Crea un resplandor gigante detrás de todo */
-    background: radial-gradient(circle at center, rgba(128, 0, 32, 0.08) 0%, transparent 70%);
-}
-
-
-
 .find-me {
-    padding: 1rem 0;
+    padding: 3rem 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -1188,38 +1137,38 @@ text-align: left;
 }
 
 .find-me__title {
-    text-align: center;
-    margin-bottom: 2rem;
     margin-top: 1rem;
-        font-size: 2.85rem;
+    text-align: center;
+    font-size: 2rem; 
+    margin-bottom: 2rem;
 }
 
-
 .find-me__list {
-    display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Para que se acomoden en móviles */
-    gap: 2rem;
+    flex-wrap: wrap; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 0;
     list-style: none;
 }
 
 .find-me__link {
+    min-width: 220px;
     display: block;
-    padding: 1.5rem;
+    padding: 1.2rem;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     text-decoration: none;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    min-width: 220px;
 }
 
-/* --- El efecto de elevación y borde rojo --- */
 .find-me__link:hover {
-    transform: translateY(-10px); /* Sube en el eje Y */
-    background: rgba(128, 0, 32, 0.1); /* Fondo rojo vino sutil */
-    border-color: #e11d48; /* Borde rojo brillante */
-    box-shadow: 0 15px 30px rgba(225, 29, 72, 0.2); /* Sombra con resplandor */
+    transform: translateY(-10px); 
+    background: rgba(128, 0, 32, 0.1); 
+    border-color: #e11d48; 
+    box-shadow: 0 15px 30px rgba(225, 29, 72, 0.2); 
 }
 
 .find-me__content {
@@ -1229,14 +1178,14 @@ text-align: left;
 }
 
 .find-me__icon {
-    width: 35px; /* Ajusta el tamaño de tus logos */
+    width: 35px; 
     height: 35px;
     object-fit: contain;
 }
 
 .find-me__text {
     display: flex;
-    flex-direction: column; /* Pone el usuario debajo del nombre */
+    flex-direction: column; 
 }
 
 .find-me__name {
@@ -1252,15 +1201,14 @@ text-align: left;
 }
 
 .contact__footer {
-    text-align: center;         /* Centra el texto por dentro */
-    max-width: 500px;           /* Limita el ancho para que el centrado se note */
-    margin: 2rem auto 0 auto;   /* Centra el bloque entero horizontalmente */
+    text-align: center;         
+    max-width: 500px;           
+    margin: 2rem auto 0 auto;   
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.4);
     line-height: 1.5;
 }
 
-/* Para que los links dentro del footer también se vean elegantes */
 .contact__footer a {
     color: #e11d48; 
     text-decoration: none;
@@ -1269,13 +1217,11 @@ text-align: left;
 
 .contact__footer a:hover {
     text-decoration: underline;
-    color: #fb7185; /* Un rojo más iluminado al pasar el mouse */
+    color: #fb7185; 
 }
 
 
-
 /*PROJECTS*/
-/* --- 1. CONTENEDOR PRINCIPAL Y SISTEMA --- */
 .projects {
   padding: 20px 0;
 }
@@ -1286,26 +1232,29 @@ text-align: left;
 }
 
 .book__system {
+    min-height: 650px;
+    background: radial-gradient(circle at center, rgba(128, 0, 32, 0.25) 0%, transparent 70%);
     display: flex;
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
-    min-height: 650px;
-    gap: 20px; /* Margen exacto de 20px entre botones y libro */
+    gap: 40px; /* Generous space between book and buttons */
     perspective: 2000px;
+    width: 100%;
     margin-top: 30px;
-    background: radial-gradient(circle at center, rgba(128, 0, 32, 0.25) 0%, transparent 70%);
 }
 
-/* El contenedor que empuja los botones al abrirse */
+/* The container that pushes the buttons when opened */
 .book-container {
-    width: 400px; /* Una página */
+    width: 400px; /* One page  */
     height: 550px;
-    transition: width 1s ease;
     position: relative;
+    transition: width 1s ease, transform 1s ease; 
+    margin: 0 auto; /* Basic centering*/
 }
 
 .book-container.open {
-    width: 800px; /* Dos páginas */
+    width: 800px; /* Two pages */
 }
 
 .book {
@@ -1316,16 +1265,21 @@ text-align: left;
     transition: transform 1s;
 }
 
-/* --- 2. HOJAS Y CARAS --- */
+/* --- 2. PAGES AND FACES --- */
 .paper {
-    position: absolute;
-    width: 400px; /* Ancho fijo de hoja */
-    height: 100%;
     top: 0;
     right: 0;
     transform-style: preserve-3d;
     transform-origin: left;
     transition: transform 1s, z-index 0.5s;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none; /* Hidden byb default*/
+}
+
+.paper.active-paper {
+    display: block; /* Only the current sheet is visible */
 }
 
 .front, .back {
@@ -1337,17 +1291,15 @@ text-align: left;
     backface-visibility: hidden;
     padding: 40px 30px;
     background: linear-gradient(135deg, #0a0a0a 0%, #121212 100%);
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Borde casi invisible */
-    border-left: 1px solid rgba(128, 0, 32, 0.3); /* Luz en el lomo */
-    box-shadow: 15px 0 35px rgba(0,0,0,0.5); /* Sombra proyectada real */
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    border-left: 1px solid rgba(128, 0, 32, 0.3); 
+    box-shadow: 15px 0 35px rgba(0,0,0,0.5); 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
-   
 }
 
-/* Efecto de profundidad en el lomo */
+/* Depth effect on the spine */
 .front::before {
     content: '';
     position: absolute;
@@ -1363,9 +1315,10 @@ text-align: left;
 }
 
 .back { transform: rotateY(180deg); }
+
 .flipped { transform: rotateY(-180deg); }
 
-/* --- 3. ESTILOS DE PORTADA (GLOW EFFECT) --- */
+/* --- 3. COVER STYLES (GLOW EFFECT) --- */
 .cover-design .cover-border {
     border: none;
     width: 100%;
@@ -1408,20 +1361,20 @@ text-align: left;
 
 @keyframes bounceInfinite {
     0% { transform: translateY(0); }
-    50% { transform: translateY(-12px); } /* Sube */
-    100% { transform: translateY(0); }    /* Baja */
+    50% { transform: translateY(-12px); } /* Up */
+    100% { transform: translateY(0); }    /* Down */
 }
 
 .open-btn:hover {
     background: var(--secondary-red);
     box-shadow: 0 0 15px var(--secondary-red);
     transform: scale(1.05);
-    animation-play-state: paused; /* Se queda estático al poner el mouse */
+    animation-play-state: paused; 
     background: #e11d48;
     transform: scale(1.1);
 }
 
-/* --- 4. ÍNDICE (HOVER EFFECT) --- */
+/* --- 4. INDEX (HOVER EFFECT) --- */
 .book__index-list { list-style: none; margin-top: 20px; }
 
 .book__index-list li {
@@ -1447,7 +1400,7 @@ text-align: left;
 
 .book__index-list li:hover::after { width: 100%; }
 
-/* --- 5. CONTENIDO DE PROYECTOS Y BOTÓN SALTO --- */
+/* --- 5. PROJECT CONTENT AND JUMP BUTTON --- */
 .project-node h4 {
     color: #fff;
     text-shadow: 0 0 8px rgba(255,255,255,0.2);
@@ -1460,45 +1413,39 @@ text-align: left;
     display: inline-block;
 }
 
-/* Este es el contenedor que mencionaste, con tamaño predefinido */
-/* Contenedor del texto para que no se mueva nada alrededor */
-/* Contenedor del texto con altura reservada */
-/* El contenedor que reserva el espacio para que nada se mueva */
+/* The container that reserves the space so that nothing moves */
 .project-description {
     color: var(--color-gray-light);
     font-size: 0.95rem;
     line-height: 1.6;
-    white-space: normal;
     word-wrap: break-word;
     margin: 0;
-    min-height: 80px; /* Evita que el botón salte al iniciar */
     display: block;
+    margin-bottom: 15px;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+    white-space: pre-wrap;
+    min-height: 1.2em; 
 }
 
-/* El cursor parpadeante (opcional, da el toque de máquina de escribir) */
+/* The blinking cursor (optional, gives a typewriter feel) */
 .typing-cursor::after {
-    content: "|";
-    animation: blink 0.7s infinite;
-    color: #e11d48;
     margin-left: 2px;
+    content: "|";
+    animation: blink 0.8s infinite;
+    color: #e11d48;
 }
 
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-
-/* Solución al espacio raro: quitamos cualquier flex o gap del padre */
+/* Solution to the weird space: remove any flex or gap from the parent */
 .project-info-container {
     width: 100%;
-    display: block; /* Block es más seguro para texto que flex */
+    display: block; /* Block is more secure for text than flex */
     position: relative;
     padding-top: 10px;
 }
 
 .p-media {
-    width: 80%;           /* Un poco más pequeña y elegante */
+    width: 80%;           
     height: 150px;
     margin: 0 auto 15px auto;
     border-radius: 6px;
@@ -1508,12 +1455,11 @@ text-align: left;
 .p-media img { width: 100%; height: 100%; object-fit: cover; }
 
 .p-link {
-    /* Posicionamiento fijo respecto a la hoja */
+    /* Fixed positioning relative to the sheet */
     position: absolute;
-    bottom: 30px;      /* Distancia desde abajo */
-    left: 50%;         /* Lo movemos al centro */
-    transform: translateX(-50%); /* Ajuste exacto para centrarlo */
-    
+    bottom: 30px;      
+    left: 50%;         
+    transform: translateX(-50%); 
     padding: 12px 25px;
     background: rgba(128, 0, 32, 0.2);
     border: 1px solid rgba(225, 29, 72, 0.5);
@@ -1526,7 +1472,7 @@ text-align: left;
   }
 
 .p-link:hover {
-    /* El salto ahora es relativo a su posición fija */
+    /* The jump is now relative to its fixed position */
     transform: translateX(-50%) translateY(-10px); 
     background: rgba(128, 0, 32, 0.4);
     box-shadow: 0 10px 25px rgba(225, 29, 72, 0.5);
@@ -1534,7 +1480,7 @@ text-align: left;
 }
 
 
-/* --- 6. BOTONES DE NAVEGACIÓN --- */
+/* --- 6. NAVIGATION BUTTONS --- */
 .book-nav-btn {
     width: 50px;
     height: 50px;
@@ -1545,8 +1491,8 @@ text-align: left;
     pointer-events: none;
     backdrop-filter: blur(5px);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(128, 0, 32, 0.4); /* Más opaco */
-    border: 1px solid rgba(225, 29, 72, 0.8); /* Borde más brillante */
+    background: rgba(128, 0, 32, 0.4); 
+    border: 1px solid rgba(225, 29, 72, 0.8); 
     color: white;
     box-shadow: 0 0 15px rgba(128, 0, 32, 0.3);
 }
@@ -1556,730 +1502,186 @@ text-align: left;
 .book-nav-btn:hover {
     background: rgba(128, 0, 32, 0.2);
     border-color: #e11d48;
-    transform: scale(1.1) rotate(10deg); /* Un giro sutil para dinamismo */
+    transform: scale(1.1) rotate(10deg); 
     box-shadow: 0 0 25px rgba(225, 29, 72, 0.4);
 }
 
-
-
-
-
-
-
-
-/* --- 1. Ajuste del Contenedor del Gráfico (Para que no desaparezca) --- */
-.welcome__image-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 500px; /* Tamaño máximo en PC */
-    margin: 0 auto;
-    /* Esto es clave: mantiene la proporción 5:4 del SVG para que no desaparezca */
-    aspect-ratio: 5 / 4; 
+.control-buttons {
     display: flex;
-    align-items: center;
+    gap: 20px;
     justify-content: center;
-}
-
-.skills-chart {
     width: 100%;
-    height: auto; /* Permite que el SVG escale con el contenedor */
-    display: block;
+    z-index: 100;
+    padding-bottom: 20px;
 }
 
-/* --- 2. Layout Responsive (Mobile First mejorado) --- */
-
-/* Por defecto (Móvil): Una sola columna centrada */
-.welcome__container {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    padding: 20px;
-    align-items: center;
-    text-align: center;
+/* This class will be added by the JS only when it starts writing */
+.project-description.is-writing {
+    opacity: 1 !important;
 }
 
-.welcome__text-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@keyframes blink { 50% { opacity: 0; } }
+
+
+
+
+/*-------------MEDIA QUERIES------------*/
+
+/* --- MOBILE (Specific settings for small screens) --- */
+@media (max-width: 768px) {
+    .principles__list {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* Stats en móvil: uno debajo de otro */
-.welcome__stats {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
+/* --- TABLET / SMALL DESKTOP (From 768px) --- */
+@media (min-width: 768px) {
+    /* Header & Nav */
+    .header__container {
+        flex-direction: row; 
+        justify-content: space-between;
+        text-align: left;
+    }
+    .header__name { font-size: 2rem; }
+    .nav { width: auto; }
+    .nav__list { gap: 1rem; }
+    .nav__link { font-size: 0.9375rem; padding: 8px 12px; }
+
+    /* Contact */
+    .contact__message { padding: 2.5rem; }
+    .find-me__title { font-size: 2.85rem; }
 }
 
-/* --- 3. El salto a PC (Tu diseño original) --- */
-/* Cuando la pantalla es mayor a 1024px (Laptops/Desktop) */
+/* --- LARGE SCREENS (Standardized from 1024px) --- */
 @media (min-width: 1024px) {
+    /* Welcome */
     .welcome__container {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Vuelve a tus 2 columnas */
+        grid-template-columns: 1fr 1fr; 
         text-align: left;
         align-items: center;
         min-height: 70vh;
         gap: 2rem;
     }
-
-    .welcome__text-content {
-        align-items: flex-start;
-    }
-
-    .welcome__image-wrapper {
-        margin: 0; /* Lo pega a la derecha */
-    }
-
+    .welcome__text-content { align-items: flex-start; }
+    .welcome__image-wrapper { margin: 0; }
     .welcome__stats {
-        grid-column: 1 / span 2; /* Cruza todo el ancho abajo */
-        flex-direction: row; /* Stats en horizontal */
+        grid-column: 1 / span 2; 
+        flex-direction: row; 
         justify-content: space-between;
         margin-top: 4rem;
     }
-}
 
-/* --- ESTILO BASE (Mobile First) --- */
+    /* About */
+    .about__container {
+        flex-direction: row-reverse; 
+        align-items: flex-start;
+        gap: 4rem;
+    }
+    .about__image-container {
+        flex: 0 0 350px; 
+        height: 450px;
+        position: sticky; 
+        top: 120px;
+    }
+    .about__image { border-radius: var(--radius-full); }
 
-.blog__post {
-    display: flex;
-    flex-direction: column; /* En móvil: imagen arriba, texto abajo */
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-    padding: 15px;
-    border-radius: var(--radius-lg);
-    transition: background 0.3s ease;
-    border-bottom: 1px solid rgba(255, 59, 63, 0.1); /* Separador sutil en móvil */
-}
-
-.post__image-container {
-    width: 100%; /* Ocupa todo el ancho en móvil */
-    height: 220px; /* Altura fija para que todas las tarjetas se vean iguales */
-    overflow: hidden;
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(var(--primary-red), 0.2);
-    background-color: rgba(var(--primary-red), 0.05); /* Un fondo leve por si la imagen falla */
-}
-
-.post__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cambiado a cover para que llene el contenedor estéticamente */
-    transition: transform 0.5s ease;
-}
-
-.post__content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-/* --- AJUSTE PARA PANTALLAS GRANDES (Desktop / Laptops) --- */
-@media (min-width: 992px) {
+    /* Blog (Unified from 992px to 1024px for consistency) */
     .blog__post {
-        flex-direction: row-reverse; /* Tu diseño original en PC */
+        flex-direction: row-reverse; 
         align-items: center;
         gap: 3rem;
         padding: 25px;
         border-bottom: none;
     }
+    .post__image-container { flex: 0 0 350px; height: 240px; }
+    .post__img { object-fit: contain; }
 
-    .post__image-container {
-        flex: 0 0 350px; /* Tamaño fijo de la imagen solo en PC */
-        height: 240px;
-    }
-
-    .post__img {
-        object-fit: contain; /* Volvemos a contain si prefieres ver la imagen completa sin recortes */
-    }
-}
-
-/* Hover effects (DRY) */
-.blog__post:hover {
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.blog__post:hover .post__img {
-    transform: scale(1.05);
-}
-
-.post__link {
-    transition: color 0.3s ease;
-    font-weight: 500;
-}
-
-.post__link:hover {
-    color: var(--color-accent);
-}
-
-.post__date {
-    display: block;
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
-    color: var(--color-gray-light);
-    opacity: 0.8;
-}
-
-/* --- ESTILO BASE (Mobile First) --- */
-
-.about {
-    text-align: left;
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px 0;
-}
-
-.about__container {
-    display: flex;
-    flex-direction: column; /* Móvil: Imagen arriba, texto abajo */
-    align-items: center; /* Centramos la imagen en móvil */
-    gap: 3rem;
-    padding: 0 20px;
-}
-
-.about__image-container {
-    width: 100%;
-    max-width: 300px; /* Evitamos que la foto crezca demasiado en móviles grandes */
-    height: 300px; /* Forma más compacta para móvil */
-    position: relative;
-}
-
-.about__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: var(--radius-full);
-    border: 2px solid rgba(var(--secondary-red), 0.5);
-    box-shadow: var(--shadow-glow);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.about__content {
-    flex: 1;
-    width: 100%;
-}
-
-/* --- AJUSTE PARA PANTALLAS GRANDES (Desktop / Laptops) --- */
-@media (min-width: 1024px) {
-    .about__container {
-        flex-direction: row-reverse; /* Recuperamos tu diseño original en PC */
-        align-items: flex-start;
-        gap: 4rem;
-    }
-
-    .about__image-container {
-        flex: 0 0 350px; /* Tamaño más imponente para PC */
-        height: 450px;
-        position: sticky; /* Opcional: la foto se queda fija mientras scrolleas el texto */
-        top: 120px;
-    }
-
-    .about__image {
-        /* Puedes mantenerla redonda o darle un toque más ovalado si prefieres */
-    }
-}
-
-/* --- AJUSTES DE COMPONENTES INTERNOS --- */
-
-/* Quote: Ajuste de padding para móviles */
-.about__quote {
-    background-color: var(--color-gray-dark);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-    border-left: 4px solid var(--secondary-red);
-}
-
-/* Principios: Ya usaste auto-fit, así que es naturalmente responsive, 
-   solo ajustamos el espaciado en móvil */
-@media (max-width: 768px) {
-    .principles__list {
-        grid-template-columns: 1fr; /* Una columna para que sea fácil de leer en el bus/calle */
-    }
-}
-
-/* --- 1. Estructura Base (Mobile First) --- */
-.skills {
-    padding: 40px 20px; /* Un poco más de aire en los bordes */
-}
-
-.skills__container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* --- 2. Lista de Habilidades (Flujo vertical en móvil) --- */
-.skills__list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem; /* El margen inferior de .skill ya da el espacio */
-    margin-bottom: 3rem;
-}
-
-.skill {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    gap: 0.5rem;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-/* --- 3. Sección Learning (Mejorada para móvil) --- */
-.learning {
-    background: 
-        radial-gradient(circle at top left, rgba(128, 0, 32, 0.25) 0%, transparent 55%),
-        radial-gradient(circle at bottom right, rgba(128, 0, 32, 0.15) 0%, transparent 55%),
-        #000000;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    padding: 2rem; /* Reducido de 3rem para que en móvil no coma mucho espacio */
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-    transition: all 0.5s ease;
-}
-
-.learning__list {
-    display: grid;
-    /* En móviles muy pequeños 1 columna, en tablets 2 */
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1rem;
-    padding-left: 1.2rem; /* Para que los bullets tengan espacio */
-}
-
-/* --- 4. Media Queries para Pantallas Grandes (Desktop) --- */
-@media (min-width: 992px) {
+    /* Skills & Learning */
     .skills__list {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Dos columnas como te gusta */
+        grid-template-columns: 1fr 1fr; 
         column-gap: 4rem;
         row-gap: 1rem;
     }
+    .learning { padding: 3rem; }
+    .learning__list { grid-template-columns: repeat(3, 1fr); }
 
-    .learning {
-        padding: 3rem; /* Recuperamos el padding amplio en PC */
-    }
+    /* Contact */
+    .contact { padding: 60px 0; }
 
-    .learning__list {
-        grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
-    }
-}
-
-/* --- Tus animaciones y colores se mantienen igual (DRY) --- */
-.skill__progress {
-    /* ... (tu código actual de animaciones) ... */
-}
-
-/* --- 1. SECCIÓN CONTACTO (Mobile First) --- */
-.contact {
-    padding: 40px 20px;
-    position: relative;
-    background: radial-gradient(circle at center, rgba(128, 0, 32, 0.08) 0%, transparent 70%);
-}
-
-.contact__container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.contact__description {
-    text-align: center;
-    color: var(--color-gray-light, #a1a1a1);
-    line-height: 1.6;
-    margin: 0 auto 2rem auto;
-    max-width: 600px; /* Limita el ancho para mejor lectura */
-}
-
-/* --- Formulario Responsivo --- */
-.contact__message {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(128, 0, 32, 0.2);
-    padding: 1.5rem; /* Menos padding en móvil */
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-}
-
-.contact__form {
-    display: flex;
-    flex-direction: column; /* Apilado simple para móvil */
-    gap: 1.2rem;
-}
-
-.contact__label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--color-white);
-}
-
-.contact__input {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1rem;
-    color: white;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-/* --- 2. SECCIÓN FIND ME (Redes Sociales) --- */
-.find-me {
-    padding: 3rem 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.find-me__title {
-    text-align: center;
-    font-size: 2rem; /* Tamaño más manejable en móvil */
-    margin-bottom: 2rem;
-}
-
-.find-me__list {
-    display: grid;
-    /* Grid inteligente: 1 columna en móvil, 2 en tablet, 4 en PC */
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-    padding: 0;
-    list-style: none;
-}
-
-.find-me__link {
-    display: block;
-    padding: 1.2rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* --- 3. MEDIA QUERIES (Desktop) --- */
-@media (min-width: 768px) {
-    .contact__message {
-        padding: 2.5rem; /* Recuperamos el espacio amplio */
-    }
-
-    .find-me__title {
-        font-size: 2.85rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .contact {
-        padding: 60px 0;
-    }
-}
-
-/* --- HEADER --- */
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: var(--bg-color);
-    padding: 1.5rem 0 0.5rem; /* Ajustado para mejor balance */
-    border-bottom: 1px solid rgba(255, 59, 63, 0.3);
-    box-shadow: var(--shadow-glow);
-    width: 100%;
-}
-
-.header__container {
-    display: flex;
-    flex-direction: column; /* Apilado en móvil */
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
-    padding: 0 20px;
-}
-
-.header__brand {
-    margin-bottom: 0;
-}
-
-.header__name {
-    color: var(--color-white);
-    margin-bottom: 4px;
-    letter-spacing: -0.03em;
-    font-size: 1.5rem; /* Reducido para móvil */
-}
-
-.header__tagline {
-    font-size: 0.75rem; /* Más compacto en móvil */
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: var(--color-gray-light);
-}
-
-/* --- NAVEGACIÓN --- */
-.nav {
-    width: 100%; /* Ocupa todo el ancho para centrar la lista */
-}
-
-.nav__list {
-    display: flex;
-    justify-content: center; /* Centrado en móvil */
-    flex-wrap: wrap; /* Permite que los links bajen si no caben */
-    gap: 0.5rem; /* Espacio reducido entre links en móvil */
-    padding: 0;
-    list-style: none;
-}
-
-.nav__link {
-    padding: 6px 10px;
-    font-size: 0.85rem;
-    color: var(--color-white);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border-radius: 50px;
-}
-
-/* --- FOOTER --- */
-.footer {
-    background: var(--color-gray-dark, #111);
-    color: var(--color-gray-light);
-    padding: 3rem 0 1.5rem; /* Más espacio interno */
-    margin-top: 4rem;
-}
-
-.footer__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-.footer__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.2rem;
-    list-style: none;
-    padding: 0;
-}
-
-.footer__link {
-    color: var(--color-white);
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
-
-/* --- MEDIA QUERIES (Ajustes para Desktop) --- */
-@media (min-width: 768px) {
-    .header__container {
-        flex-direction: row; /* Horizontal en PC */
-        justify-content: space-between;
-        text-align: left;
-    }
-
-    .header__name {
-        font-size: 2rem;
-    }
-
-    .nav {
-        width: auto;
-    }
-
-    .nav__list {
-        gap: 1rem;
-    }
-
-    .nav__link {
-        font-size: 0.9375rem;
-        padding: 8px 12px;
-    }
-}
-
-
-
-
-
-
-
-
-/* --- ESTILOS BASE (MOBILE FIRST) --- */
-/* --- ESTILOS BASE Y ESCRITORIO (TU DISEÑO ORIGINAL) --- */
-/* --- CONFIGURACIÓN RESPONSIVE (MOBILE FIRST) --- */
-
-.book__system {
-    display: flex;
-    flex-direction: column; /* Botones siempre debajo */
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    perspective: 2000px;
-}
-
-/* Contenedor en Móvil: Una sola tarjeta */
-.book-container {
-    width: 90vw;
-    max-width: 400px;
-    height: 550px;
-    position: relative;
-    perspective: none; /* Sin 3D en móvil */
-}
-
-/* En PC (Laptop/Desktop): Activamos el libro */
-@media (min-width: 1024px) {
-    .book__system {
+    /* --- BOOK SYSTEM (PC) --- */
+   .book__system {
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
         perspective: 2000px;
-        flex-direction: row; /* Opcional: botones a los lados o déjalos en column si te gusta abajo */
+        overflow: hidden; 
+        gap: 10px;          /* Minimum space between book and buttons */
+        min-height: 700px;  
+        justify-content: center;
     }
 
     .book-container {
-        width: 400px; /* Ancho de una página */
-        transition: width 1s ease;
+        width: 400px; 
+        height: 550px;
+        position: relative;
+        transition: transform 1s ease-in-out; 
+        transform: translateX(0); 
     }
 
+    /*perfectly centered*/
     .book-container.open {
-        width: 800px; /* Se expande a dos páginas */
+        width: 400px !important; 
+        transform: translateX(200px); 
     }
-}
 
-/* --- TRATAMIENTO DE HOJAS --- */
+    .control-buttons {
+        margin-top: 10px; 
+        gap: 3rem;          /*horizontal*/
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        z-index: 100;
+    }
 
-/* Móvil: Las hojas son slides planos */
-.paper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: none; /* Ocultas por defecto */
-}
-
-.paper.active-paper {
-    display: block; /* Solo la hoja actual se ve */
-}
-
-/* PC: Comportamiento de libro original */
-@media (min-width: 1024px) {
+    /* Pages */
     .paper {
-        display: block !important; 
+        display: block !important;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
         right: 0;
         transform-origin: left;
         transition: transform 1s, z-index 0.5s;
     }
+
+    .front, .back { backface-visibility: hidden; }
+    .back { transform: rotateY(180deg); }
 }
 
-/* --- MANEJO DE CARAS (FRONT/BACK) --- */
-
-/* Móvil: Queremos ver una cara a la vez */
+/* --- MOBILE BOOK LOGIC (Settings for touchscreens/small screens) --- */
 @media (max-width: 1023px) {
+    .book-container {
+        transform: translateX(0) !important;
+        width: 90vw;
+    }
     .front, .back {
         position: absolute !important;
         width: 100%;
         height: 100%;
         top: 0;
         left: 0;
-        display: none; /* Ocultas */
-        transform: none !important; /* Sin rotaciones 3D */
+        display: none; 
+        transform: none !important; 
     }
-
-    /* La cara que toque mostrar según el paso actual */
-    .face-active {
-        display: flex !important;
-    }
-}
-
-/* PC: Caras originales */
-@media (min-width: 1024px) {
-    .front, .back {
-        backface-visibility: hidden;
-    }
-    .back { transform: rotateY(180deg); }
-}
-
-.control-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    width: 100%;
-    z-index: 100; /* Asegura que los botones estén sobre el gradiente de fondo */
-}
-
-/* Ajuste para que el texto no se oculte en móvil */
-@media (max-width: 1023px) {
     .face-active {
         display: flex !important;
         flex-direction: column;
         justify-content: flex-start;
-        overflow-y: auto; /* Por si el texto es muy largo en pantallas pequeñas */
+        overflow-y: auto;
     }
 }
 
-.book__system {
-    display: flex;
-    flex-direction: column; /* Siempre en vertical */
-    align-items: center;
-    justify-content: center;
-    gap: 40px; /* Espacio generoso entre libro y botones */
-    perspective: 2000px;
-    width: 100%;
-    margin-top: 30px;
-}
-
-.control-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    width: 100%;
-    padding-bottom: 20px;
-}
-
-/* Evitar que el texto se desborde en móvil */
-.project-description {
-    min-height: 100px; /* Reserva espacio para que el botón no salte */
-    margin-bottom: 15px;
-}
-
-/* --- CENTRADO DINÁMICO DEL LIBRO --- */
-.book-container {
-    width: 400px;
-    height: 550px;
-    position: relative;
-    /* Suaviza tanto el cambio de ancho como el movimiento de centrado */
-    transition: width 1s ease, transform 1s ease; 
-    margin: 0 auto; /* Centrado básico */
-}
-
-@media (min-width: 1024px) {
-    .book-container.open {
-        width: 800px;
-        /* Movemos el libro un poco a la derecha para compensar las hojas abiertas a la izquierda */
-        /* 200px es generalmente la mitad del ancho de una página (400px) */
-        transform: translateX(200px); 
-    }
-}
-
-/* En móvil, nos aseguramos de que no haya desplazamientos extraños */
-@media (max-width: 1023px) {
-    .book-container {
-        transform: translateX(0) !important;
-        width: 90vw;
-    }
-}
-
-
-.project-description {
-    opacity: 0; /* Totalmente invisible */
-    transition: opacity 0.3s ease;
-    white-space: pre-wrap;
-    min-height: 1.2em; /* Reserva el espacio */
-}
-
-/* Esta clase la pondrá el JS solo cuando empiece a escribir */
-.project-description.is-writing {
-    opacity: 1 !important;
-}
-
-.typing-cursor::after {
-    content: "|";
-    animation: blink 0.8s infinite;
-    color: #e11d48;
-}
-@keyframes blink { 50% { opacity: 0; } }

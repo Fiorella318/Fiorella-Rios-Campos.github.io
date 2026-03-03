@@ -1683,3 +1683,25 @@ text-align: left;
     }
 }
 
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; 
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin-bottom: 20px;
+
+    width: 80%;           
+    height: 150px;
+    margin: 0 auto 15px auto;
+    border-radius: 6px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

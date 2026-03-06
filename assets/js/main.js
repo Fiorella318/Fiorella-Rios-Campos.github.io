@@ -11,8 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
             submitBtn.disabled = true;
             submitBtn.style.cursor = "wait";
 
-            const serviceID = 'service_fzae7xm'; 
-            const templateID = 'template_7vyh6o8';
+            const serviceID = process.env.serviceID; 
+            const templateID = process.env.templateID;
+           
 
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {

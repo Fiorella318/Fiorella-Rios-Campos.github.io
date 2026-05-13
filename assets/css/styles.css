@@ -900,45 +900,73 @@ text-align: left;
 
 .skill__progress--css {
   --index: 1;
-  width: 98%;
+  width: 100%;
   background: linear-gradient(90deg, #06b6d4 0%, #22d3ee 100%);
 }
 
 .skill__progress--js {
   --index: 2;
-  width: 98%;
+  width: 100%;
   background: linear-gradient(90deg, #fbbf24 0%, #fde047 100%);
   animation-duration: 0.8s;
 }
 
 .skill__progress--git{
   --index: 3;
-  width: 90%;
+  width: 100%;
   background: linear-gradient(90deg, #f05032 0%, #fb7185 100%);
 }
 
 .skill__progress--cwc{
   --index: 4;
-  width: 85%;
+  width: 100%;
   background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
 }
 
 .skill__progress--typescript{
   --index: 5;
-  width: 70%;
+  width: 100%;
   background: linear-gradient(90deg, #3178c6 0%, #60a5fa 100%);
 }
 
 .skill__progress--python{
   --index: 5;
-  width: 70%;
+  width: 90%;
   background: linear-gradient(90deg, #3776ab 0%, #ffd43b 100%);
+}
+
+.skill__progress--MT{
+  --index: 7;
+  width: 100%;
+  background: linear-gradient(90deg, #0a9c6e9f 0%, #0a9c6e9f  100%);
 }
 
 .skill__progress--react{
   --index: 6;
-  width: 60%;
+  width: 100%;
   background: linear-gradient(90deg, #61dafb 0%, #a5f3fc 100%);
+}
+
+.skill__progress--tailwind{
+  --index: 8;
+  width: 100%;
+  background: linear-gradient(90deg, #7e06d4 0%, #7e06d4 100%);
+}
+
+.skill__progress--node{
+  --index: 9;
+  width: 95%;
+  background: linear-gradient(90deg, #96d406 0%, #96d406 100%);
+}
+.skill__progress--next{
+  --index: 10;
+  width: 95%;
+  background: linear-gradient(90deg, #2506d4 0%, #2506d4 100%);
+}
+.skill__progress--express{
+  --index: 11;
+  width: 95%;
+  background: linear-gradient(90deg, #d4066d 0%, #d4066d 100%);
 }
 
 /* --- Animations --- */

@@ -1733,3 +1733,131 @@ text-align: left;
     width: 100%;
     height: 100%;
 }
+
+/* ===================================== */
+/* === SKILLS SECTION — MODERN REDESIGN === */
+/* ===================================== */
+
+/* Per-category color palette (harmonized warm-to-cool spectrum) */
+/* Each group sets --bar-rgb, used by its number, line, and bars */
+.skills__group--core    { --bar-rgb: var(--primary-red); }         /* 255, 59, 63   — crimson */
+.skills__group--frontend { --bar-rgb: 244, 114, 182; }              /* rose pink */
+.skills__group--ai       { --bar-rgb: 56, 189, 248; }               /* electric cyan */
+.skills__group--dev      { --bar-rgb: 168, 85, 247; }               /* royal purple */
+
+/* Tagline — editorial italic line under the title */
+.skills__tagline {
+    text-align: center;
+    color: var(--color-gray-light);
+    font-family: var(--font-titles);
+    font-style: italic;
+    font-size: 1.0625rem;
+    font-weight: 400;
+    max-width: 580px;
+    margin: 2rem auto 3.5rem;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+}
+
+/* Numbered category headers (magazine-style) */
+.skills__category {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-white);
+    line-height: 1.2;
+}
+
+.skills__group:first-of-type .skills__category {
+    margin-top: 2.5rem;
+}
+
+.skills__category-num {
+    font-family: var(--font-titles);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: rgb(var(--bar-rgb, var(--primary-red)));
+    letter-spacing: 0;
+    text-shadow: 0 0 16px rgba(var(--bar-rgb, var(--primary-red)), 0.6);
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.skills__category-text {
+    flex-shrink: 0;
+}
+
+.skills__category-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg,
+        rgba(var(--bar-rgb, var(--primary-red)), 0.5) 0%,
+        rgba(var(--bar-rgb, var(--primary-red)), 0.05) 60%,
+        transparent 100%);
+    min-width: 40px;
+}
+
+/* Skill row refinements — no percentage label, tighter rhythm */
+.skills__list .skill {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.65rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.35s ease;
+}
+
+.skills__list .skill__name {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: var(--font-main);
+    color: var(--color-white);
+    letter-spacing: 0.015em;
+    margin: 0;
+}
+
+.skills__list .skill__bar {
+    grid-column: 1;
+    grid-row: 2;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Default fill — uses the category's --bar-rgb variable */
+.skill__progress:not([class*="skill__progress--"]) {
+    background: linear-gradient(90deg,
+        rgba(var(--bar-rgb, var(--primary-red)), 0.75) 0%,
+        rgba(var(--bar-rgb, var(--primary-red)), 1) 100%);
+    box-shadow:
+        0 0 12px rgba(var(--bar-rgb, var(--primary-red)), 0.5),
+        0 0 24px rgba(var(--bar-rgb, var(--primary-red)), 0.2);
+    animation-delay: 0s;
+}
+
+/* Subtle hover lift + intensified glow */
+.skills__list .skill:hover {
+    transform: translateX(4px);
+}
+
+.skills__list .skill:hover .skill__progress:not([class*="skill__progress--"]) {
+    box-shadow:
+        0 0 16px rgba(var(--bar-rgb, var(--primary-red)), 0.75),
+        0 0 32px rgba(var(--bar-rgb, var(--primary-red)), 0.35);
+}
+
+/* Breathing room before Currently Exploring card */
+.learning {
+    margin-top: 4rem;
+}
